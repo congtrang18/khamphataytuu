@@ -23,8 +23,8 @@ window.defaultRoutes = [
 
 window.markersData = {
     "route_1": {
-        "lat": 21.053815238363182,
-        "lng": 105.7421829373261,
+        "lat": 21.053069353446705,
+        "lng": 105.74254591349383,
         "info": {
             "title": "Chùa Bồ Đề",
             "category": "Di tích lịch sử",
@@ -42,13 +42,13 @@ window.markersData = {
             "otherIssues": "Cuối thế kỷ XIX, chùa là nơi đặt bộ chỉ huy quân Cờ Đen của Lưu Vĩnh Phúc. Từ đây, quân Cờ Đen phối hợp với quân triều đình Huế phục kích quân Pháp trong hai trận Cầu Giấy, tiêu diệt hai sĩ quan Garnier và Rivière, đồng thời ngăn quân Pháp tiến lên Sơn Tây.",
             "activityStatus": "",
             "note": "310/QĐ-BT ngày 13/2/1996",
-            "url_vrtour": "https://vrtour-360-9bfde.web.app/chubode/index.htm",
+            "url_vrtour": "",
             "imageUrl": "uploads/images/diem-den/chua-bo-de.png"
         }
     },
     "route_2": {
-        "lat": 21.066874291961476,
-        "lng": 105.74240022562863,
+         "lat": 21.06772449388266,
+        "lng": 105.74248674232894,
         "info": {
             "title": "Chùa Phúc Lý",
             "category": "Di tích lịch sử – văn hóa",
@@ -70,8 +70,8 @@ window.markersData = {
         }
     },
     "route_3": {
-        "lat": 21.05504322485269,
-        "lng": 105.74388959699445,
+        "lat": 21.055069300939483,
+        "lng":  105.74386374232925,
         "info": {
             "title": "Chùa Văn Trì",
             "category": "Di tích kiến trúc nghệ thuật",
@@ -93,8 +93,8 @@ window.markersData = {
         }
     },
     "route_4": {
-        "lat": 21.05194879282093,
-        "lng": 105.74383741821882,
+        "lat": 21.052016111985115,
+        "lng": 105.74377693882484,
         "info": {
             "title": "Đình Ngọa Long",
             "category": "Di tích lịch sử – kiến trúc nghệ thuật",
@@ -116,8 +116,8 @@ window.markersData = {
         }
     },
     "route_5": {
-        "lat": 21.066848938999833,
-        "lng": 105.74218375261255,
+        "lat": 21.06772449388266,
+        "lng": 105.74248674232894,
         "info": {
             "title": "Đình Phúc Lý",
             "category": "Di tích lịch sử – văn hóa",
@@ -139,8 +139,8 @@ window.markersData = {
         }
     },
     "route_6": {
-        "lat": 21.055056858343335,
-        "lng": 105.74258599952968,
+        "lat":  21.055186438062044,
+        "lng": 105.74256527116462,
         "info": {
             "title": "Đình Văn Trì",
             "category": "Di tích kiến trúc nghệ thuật",
@@ -162,8 +162,8 @@ window.markersData = {
         }
     },
     "route_7": {
-        "lat": 21.04998028761869,
-        "lng": 105.74102989376033,
+        "lat": 21.050143589574365,
+        "lng": 105.74156878650655,
         "info": {
             "title": "Miếu Đồng Cổ",
             "category": "Di tích lịch sử – kiến trúc nghệ thuật",
@@ -185,10 +185,10 @@ window.markersData = {
         }
     },
     "route_8": {
-        "lat": 21.06886369283372,
-        "lng": 105.73135755835375,
+        "lat": 21.068955086242756,
+        "lng": 105.73108793558222,
         "info": {
-            "title": "Chùa Khánh Hưng",
+            "title": "Chùa Hưng Khánh",
             "category": "Di tích kiến trúc nghệ thuật",
             "worship": "Phật",
             "description": "TDP Trung 5",
@@ -208,8 +208,8 @@ window.markersData = {
         }
     },
     "route_9": {
-        "lat": 21.06921352623541,
-        "lng": 105.73185915461622,
+        "lat": 21.069298664899357,
+        "lng": 105.7319221,
         "info": {
             "title": "Đình Tây Tựu",
             "category": "Di tích kiến trúc nghệ thuật",
@@ -232,8 +232,8 @@ window.markersData = {
         }
     },
     "route_10": {
-        "lat": 21.065483593647095,
-        "lng": 105.73940059864532,
+        "lat": 21.06552131892868,
+        "lng": 105.73972855767104,
         "info": {
             "title": "Đình Trung Tựu",
             "category": "Di tích lịch sử – kiến trúc nghệ thuật",
@@ -255,8 +255,8 @@ window.markersData = {
         }
     },
     "route_11": {
-        "lat": 21.069491498647157,
-        "lng": 105.73190417318445,
+        "lat": 21.07539619810955,
+        "lng": 105.7278992826075,
         "info": {
             "title": "Miếu Tây Tựu",
             "category": "Di tích kiến trúc nghệ thuật",
@@ -279,8 +279,8 @@ window.markersData = {
         }
     },
     "route_12": {
-        "lat": 21.06690440985659,
-        "lng": 105.73441994098667,
+        "lat": 21.066768194798055,
+        "lng": 105.73449492391411,
         "info": {
             "title": "Nhà Thờ Nguyễn Hữu Liêu",
             "category": "Di tích lịch sử",
@@ -302,8 +302,8 @@ window.markersData = {
         }
     },
     "route_13": {
-        "lat": 21.050656912800342,
-        "lng": 105.74134413309328,
+        "lat": 21.057583492829007,
+        "lng": 105.74079282494766,
         "info": {
             "title": "Đình Nguyên Xá",
             "category": "Di tích lịch sử – văn hóa",
@@ -325,8 +325,8 @@ window.markersData = {
         }
     },
     "route_14": {
-        "lat": 21.051576610938486,
-        "lng": 105.7383076517251,
+        "lat": 21.051858774216797,
+        "lng": 105.73958845582236,
         "info": {
             "title": "Nhà Thờ Họ Nguyễn Đăng",
             "category": "Di tích lịch sử",
@@ -348,8 +348,8 @@ window.markersData = {
         }
     },
     "route_15": {
-        "lat": 21.055077963062367,
-        "lng": 105.74345827493195,
+        "lat": 21.055069300939483,
+        "lng":  105.74386374232925,
         "info": {
             "title": "Miếu Văn Trì (Đền Bà)",
             "category": "Di tích tín ngưỡng",
@@ -371,10 +371,10 @@ window.markersData = {
         }
     },
     "route_16": {
-        "lat": 21.070593498951084,
-        "lng": 105.72558045446499,
+        "lat": 21.07054968966478,
+        "lng": 105.7255331153421,
         "info": {
-            "title": "Đền Khánh Linh",
+            "title": "Đền Khánh Linh Từ",
             "category": "Di tích tín ngưỡng",
             "worship": "",
             "description": "TDP Thượng 1",
@@ -382,11 +382,11 @@ window.markersData = {
             "abbot": "",
             "manager": "Nguyễn Hữu Hào (Trưởng Tiểu ban QLDT Thượng 1)",
             "area": "977 m²",
-            "intro": "Đền Khánh Linh nằm trên khu đất 977 m², gồm Hậu cung, Tiền tế, nhà Tạo soạn và giếng đền.",
+            "intro": "Đền Khánh Linh Từ nằm trên khu đất 977 m², gồm Hậu cung, Tiền tế, nhà Tạo soạn và giếng đền.",
             "history": "Chưa rõ niên đại khởi dựng. Theo các cụ cao niên, đền được trùng tu lần thứ nhất năm Khải Định thứ 6 (1921) và lần thứ hai năm 1997.",
             "architecture": "Đền còn giữ: 1 bộ gian ngai thờ, 3 bát hương đá, 3 án thư, 3 bộ hoành phi câu đối, 3 văn bia, 4 pho tượng hài đồng bằng đá, 2 lọng, trống, chiêng, voi và ngựa.",
             "festival": "",
-            "landStatus": "Đền Khánh Linh hiện có các hạng mục kiến trúc gồm: Hậu cung, Tiền tế, nhà Tạo soạn, Giếng đền.",
+            "landStatus": "Đền Khánh Linh Từ hiện có các hạng mục kiến trúc gồm: Hậu cung, Tiền tế, nhà Tạo soạn, Giếng đền.",
             "otherIssues": "Chưa rõ niên đại khởi dựng (theo các cụ cao niên thì Năm Khải định thứ 6 (1921) trùng tu lần 1; năm 1997 trùng tu lần 2).",
             "activityStatus": "Trong Đền còn lưu giữ được di vật giá trị như: 1 bộ gian ngai thờ, 3 bát hương đá, 3 án thư, 3 bộ hoành phi câu đối, 03 văn bia, 4 pho tượng hài đồng đá, 2 lọng, trống, chiêng, voi, ngựa",
             "note": "Đang hoàn thiện hồ sơ đề nghị xếp hạng di tích Thành phố",
