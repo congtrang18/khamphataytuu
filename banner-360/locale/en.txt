@@ -1,0 +1,34 @@
+#: locale=en
+
+## Action
+
+### URL
+LinkBehaviour_EE91A92A_C8E3_99AD_41D7_2042EE2745B2.source = https://khamphataytuu.vn/dinhtaytuu/
+LinkBehaviour_EE14312B_C8E3_A9AC_41D8_2A2948E955AB.source = https://khamphataytuu.vn/mieutaytuu
+
+## Hotspot
+
+### Tooltip
+HotspotPanoramaOverlayArea_ED871A50_C8E0_9BFD_41CD_AEB0ABD3BD62.toolTip = Tay Tuu Communal House
+HotspotPanoramaOverlayArea_FC0FEA72_C53A_E51E_41E5_6D945E069BE2.toolTip = Tay Tuu Communal House
+
+## Media
+
+### Subtitle
+panorama_FC130A71_C53A_E51A_41C9_D39580AD0523.subtitle = Tay Tuu is an ancient village with a long history. Its former name is Tay Dam village, Now Located In Tay Tuu Ward, Hanoi City. 20km west from the center of Hanoi capital. Cultural imprints of the country's founding period are still preserved through the worshiping ceremony of Blessed God Bach Hac Tam Giang - who had merit in repelling foreign invaders and protecting the Hung dynasty. Besides, Tay Tuu is also famous as one of the long-standing traditional flower villages specializing in supplying flowers to the inner city of Hanoi; was recognized by the City People's Committee as a traditional flower village in 2017.
+
+### Title
+panorama_FC130A71_C53A_E51A_41C9_D39580AD0523.label = Overview of Tay Tuu flower village
+
+## Right Click Menu
+
+### Text
+TDVAuthor.label = VRPlus.vn
+
+## Tour
+
+### Description
+tour.description = TAY TUU COMMUNAL HOUSE
+
+### Title
+tour.name = TAY TUU COMMUNAL HOUSE

@@ -1,0 +1,500 @@
+<!doctype html>
+<html class="vn" lang="vn">
+<head>
+    
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
+    <meta property="og:url" content="./">
+    <meta property="og:title" content="Tây Tựu">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+        <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <link rel="icon" href="uploads/images/logo.png" type="image/x-icon"/>
+
+    <script>var baseUrl = ".";</script>
+    <script>var current_locale = "vn";</script>
+
+    <title>Tây Tựu</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+            <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+        <link rel="canonical" href="./"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Tây Tựu"/>
+    <meta property="og:description" content=""/>
+    <meta property="og:url" content="./"/>
+    <meta property="og:site_name" content="TRANG THÔNG TIN ĐIỆN TỬ SỐ HÓA Tây Tựu"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Tây Tựu"/>
+    <meta name="twitter:url" content="./">
+    <meta name="twitter:site" content="TRANG THÔNG TIN ĐIỆN TỬ SỐ HÓA Tây Tựu">
+    <meta name="twitter:image" content="./">
+    <meta name="twitter:description" content=""/>
+
+    <!-- Styles-->
+    <link rel="stylesheet" type="text/css" href="css/libs.css?v=1.2.3"/>
+    <link rel="stylesheet" type="text/css" href="vendor/fontawesome-pro/css/all.min.css?v=1.2.3"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="css/app.css?v=1.2.3"/>
+    <link rel="stylesheet" type="text/css" href="css/custom.css?v=1.3.6"/>
+    <link rel="stylesheet" type="text/css" href="vendor/leaflet/leaflet.css?v=1.2.4"/>
+    <style>
+        .leaflet-popup-content-wrapper { padding: 0 !important; overflow: hidden !important; border-radius: 12px !important; }
+        .leaflet-popup-content { margin: 0 !important; width: 290px !important; }
+        .sovereignty-label {
+            background: #dc3545 !important;
+            color: #ffffff !important;
+            font-weight: 700 !important;
+            font-size: 11px !important;
+            padding: 4px 8px !important;
+            border-radius: 4px !important;
+            border: 1px solid #ffd700 !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+            white-space: nowrap !important;
+        }
+        .sovereignty-label::before {
+            border-top-color: #dc3545 !important;
+        }
+    </style>
+
+    <!-- Scripts-->
+    <script src="js/libs.js?v=1.2.3" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" defer="defer"></script>
+    <script src="js/relics-data.js?v=1.0.3"></script>
+    <script src="js/app.js?v=1.2.3" defer="defer"></script>
+    <script src="js/main.js?v=1.2.6" defer="defer"></script>
+
+
+<style>
+    .route {
+        position: relative;
+    }
+    .route__select {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+        padding: 0 18px;
+        height: 48px;
+    }
+    .route__search {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        outline: none;
+        background: transparent;
+        font-size: 14px;
+        padding-right: 35px;
+    }
+    .route__search::placeholder {
+        color: #999;
+    }
+    .route__select i {
+        position: absolute;
+        right: 18px;
+        color: #666;
+    }
+    .route__dropdown {
+        display: none;
+        position: absolute;
+        top: calc(100% + 5px);
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        max-height: 300px;
+        overflow-y: auto;
+        padding: 8px 20px;
+    }
+
+    /* Hiện dropdown */
+    .route__dropdown.is-open {
+        display: block;
+    }
+    /* Scroll */
+    .route__dropdown::-webkit-scrollbar {
+        width: 6px;
+    }
+    .route__dropdown::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+    .route__dropdown::-webkit-scrollbar-thumb {
+        background: #aaa;
+        border-radius: 10px;
+    }
+    .route__item {
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+    .route__item:last-child {
+        border-bottom: none;
+    }
+    .route__item label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        cursor: pointer;
+    }
+    /* Ảnh */
+    .route__item-image {
+        width: 80px;
+        height: 60px;
+        flex: 0 0 80px;
+        overflow: hidden;
+        border-radius: 6px;
+    }
+    .route__item-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    /* Nội dung */
+    .route__item-content {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        min-width: 0;
+    }
+    .route__item-name {
+        font-size: 15px;
+        line-height: 1.3;
+        color: #333;
+    }
+    .route__item-address {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 13px;
+        color: #777;
+    }
+    .route__item-address i {
+        flex-shrink: 0;
+    }
+    .route__empty {
+        display: none;
+        padding: 20px;
+        text-align: center;
+        color: #999;
+        font-size: 14px;
+    }
+    .route__empty.is-show {
+        display: block;
+    }
+</style>
+</head>
+<body>
+
+
+
+<div class="page">
+
+    <header class="header">
+    <div class="header__wrapper">
+        <div class="container">
+            <div class="header__inner">
+                <a class="h-logo" href="#">
+                    <img src="uploads/images/logo.png" alt="Tây Tựu"/>
+                    <div class="h-logo__text">
+                        <span>Tây Tựu</span><span>360</span>
+                    </div>
+                </a>
+                <div class="header__elements">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="page__content">
+        <section class="banner" id="s-virtual">
+            <div class="banner__bg">
+                <iframe src="banner-360/index.htm" frameborder="0"></iframe>
+            </div>
+            <div class="banner__wrapper">
+                <div class="banner__logo">
+                    <img src="uploads/images/logo.png" alt="Tây Tựu">
+                </div>
+                <h3 class="banner__subtitle">Chào mừng bạn đến với</h3>
+                <h2 class="banner__title">Phường Tây Tựu</h2>
+                <div class="banner__btn-wrap">
+                    <button class="button js-experience" type="button">Trải nghiệm 360</button>
+                </div>
+                <div class="banner__arrow-wrap">
+                    <a class="banner__arrow arrow-down text-white" href="#s-about">
+                        <i class="fal fa-arrow-down"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="about section" id="s-about">
+            <div class="container">
+                <div class="about__inner">
+                    <img class="about__bg" src="images/about-bg.png" alt="about background">
+                    <div class="row">
+                        <div class="col-lg-5 mb-4 mb-lg-0">
+                            <h2 class="about__title section__title text-primary">
+                                Tây Tựu
+                            </h2>
+                            <div class="about__subtitle">Đôi nét về một phường<br>của Hà Nội</div>
+                            <div class="about__content">
+                                <p>&quot;<strong>Nằm ở phía Tây thủ đô Hà Nội, Tây Tựu là một phường thuộc quận Bắc Từ Liêm.</strong>&nbsp;Tây Tựu cách trung tâm thành phố khoảng 15km theo trục đường Quốc lộ 32 (Cầu Giấy – Hồ Tùng Mậu). Phường Tây Tựu có vị trí tiếp giáp với các đơn vị hành chính lân cận:</p>
+
+                                <p>- Phía Bắc giáp các phường Thượng Cát và Liên Mạc<br />
+                                - Phía Nam giáp các phường Phương Canh và Xuân Phương<br />
+                                - Phía Đông giáp các phường Minh Khai và Phú Diễn<br />
+                                - Phía Tây giáp huyện Hoài Đức và huyện Đan Phượng</p>
+
+                                <p>Phường Tây Tựu có diện tích tự nhiên khoảng 5,30 km², nằm ven trục giao thông huyết mạch kết nối nội đô với khu vực phía Tây Bắc thành phố. Nơi đây từ lâu đã nổi tiếng với làng nghề hoa truyền thống Tây Tựu (làng Đăm) có bề dày hàng trăm năm, đồng thời là vùng đất văn hiến lưu giữ di sản văn hóa phi vật thể quốc gia Lễ hội bơi Đăm truyền thống.<br />
+                                Khu vực có địa hình đồng bằng màu mỡ được bồi đắp bởi hệ thống sông Hồng và sông Nhuệ lân cận, <strong>địa hình bằng phẳng, chất đất thịt và phù sa màu mỡ rất thuận lợi cho canh tác nông nghiệp công nghệ cao và hoa màu chất lượng cao.</strong>&quot;</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <img class="w-full rounded" src="uploads/images/home/danphuong-02.jpg"
+                                alt="Tây Tựu">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="counter section">
+            <img class="section__bg" src="images/counter-bg.png" alt="Counter background">
+            <div class="container">
+                <div class="counter__inner">
+                                            <div class="counter__item">
+                            <div class="counter__number">+50</div>
+                            <div class="counter__label">Di tích</div>
+                            <div class="counter__desc">Trải qua thăng trầm lịch sử</div>
+                        </div>
+                                            <div class="counter__item">
+                            <div class="counter__number">+2000</div>
+                            <div class="counter__label">Hiện vật</div>
+                            <div class="counter__desc">Qua các thời đại</div>
+                        </div>
+                                            <div class="counter__item">
+                            <div class="counter__number">&gt;100</div>
+                            <div class="counter__label">Tuyến du lịch</div>
+                            <div class="counter__desc">Cho khách trải nghiệm</div>
+                        </div>
+                                            <div class="counter__item">
+                            <div class="counter__number">&gt;100</div>
+                            <div class="counter__label">Sản phẩm</div>
+                            <div class="counter__desc">Cho khách trải nghiệm</div>
+                        </div>
+                                    </div>
+            </div>
+        </section>
+                    <section class="section offset-section">
+                <img class="texture-5" src="images/texture-1.png" alt="Texture 1">
+                <img class="texture-4" src="images/texture-4.png" alt="Texture 4">
+                <img class="texture-3" src="images/texture-3.png" alt="Texture 3">
+                <div class="container">
+                    <h2 class="section__title text-primary">360° Di tích lịch sử - văn hóa</h2>
+                    <div class="section__subtitle">Những địa điểm nổi bật</div>
+                    <div class="section__desc"><p>C&ugrave;ng kh&aacute;m ph&aacute; ngay những điểm đến tuyệt vời ở Đan Phượng bạn nh&eacute;!</p></div>
+                    <div class="mt-4">
+                        <div class="place-grid">
+                                                                                                <div class="place-grid__col">
+                                        <div class="place-grid__item">
+                                            <div class="place-grid__frame">
+                                                <img src="uploads/images/destinations/img-3.jpg" alt="Di tích quốc gia đặc biệt">
+                                            </div>
+                                            <div class="place-grid__overlay">
+                                                <div class="place-grid__title">Di tích quốc gia đặc biệt</div>
+                                                <div class="place-grid__desc">1
+                                                    di tích
+                                                </div>
+                                                <img class="place-grid__icon" src="images/icon-360-view.svg"
+                                                    alt="icon 360">
+                                            </div>
+                                        </div>
+                                    </div>
+                                                                                                                                <div class="place-grid__col">
+                                        <div class="place-grid__item">
+                                            <div class="place-grid__frame">
+                                                <img src="uploads/images/destinations/img-4.jpg" alt="Di tích quốc gia">
+                                            </div>
+                                            <div class="place-grid__overlay">
+                                                <div class="place-grid__title">Di tích quốc gia</div>
+                                                <div class="place-grid__desc">15
+                                                    di tích
+                                                </div>
+                                                <img class="place-grid__icon" src="images/icon-360-view.svg"
+                                                    alt="icon 360">
+                                            </div>
+                                        </div>
+                                    </div>
+                                                                                                                                <div class="place-grid__col">
+                                        <div class="place-grid__item">
+                                            <div class="place-grid__frame">
+                                                <img src="uploads/images/destinations/img-4.jpg" alt="Di tích thành phố">
+                                            </div>
+                                            <div class="place-grid__overlay">
+                                                <div class="place-grid__title">Di tích thành phố</div>
+                                                <div class="place-grid__desc">0
+                                                    di tích
+                                                </div>
+                                                <img class="place-grid__icon" src="images/icon-360-view.svg"
+                                                    alt="icon 360">
+                                            </div>
+                                        </div>
+                                    </div>
+                                                                                                                                <div class="place-grid__col">
+                                        <div class="place-grid__item">
+                                            <div class="place-grid__frame">
+                                                <img src="uploads/images/destinations/img-5.jpg" alt="Di tích khác">
+                                            </div>
+                                            <div class="place-grid__overlay">
+                                                <div class="place-grid__title">Di tích khác</div>
+                                                <div class="place-grid__desc">0
+                                                    di tích
+                                                </div>
+                                                <img class="place-grid__icon" src="images/icon-360-view.svg"
+                                                    alt="icon 360">
+                                            </div>
+                                        </div>
+                                    </div>
+                                                                                    </div>
+                    </div>
+                </div>
+            </section>
+                <section class="section pb-0">
+            <div class="container">
+                <h2 class="section__title text-primary">Tuyến du lịch</h2>
+                <div class="section__subtitle">Những tuyến du lịch nổi bật</div>
+                <div class="section__desc">Mời bạn chọn tuyến du lịch yêu thích tại đây, khám phá ngay nào!</div>
+                <div class="mt-3 mb-40 mx-auto position-relative" style="max-width: 790px; z-index: 100">
+                    <div class="route">
+                        <div class="route__select js-destination-select">
+                            <input type="text" class="route__search js-destination-search"
+                                placeholder="Tìm kiếm địa điểm..." autocomplete="off">
+                            <i class="fal fa-fw fa-search"></i>
+                        </div>
+                        <div class="route__dropdown js-destination-dropdown">
+                            <div class="route__empty js-destination-empty">
+                                Không tìm thấy địa điểm
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="map-frame">
+                    <div id="map"></div>
+
+                    <!-- Nút định vị GPS của người dùng -->
+                    <button type="button" id="btn-user-locate" class="map-locate-btn" title="Vị trí của bạn">
+                        <i class="fas fa-crosshairs"></i>
+                    </button>
+
+                    <!-- Khung thông tin lộ trình & quãng đường -->
+                    <div id="route-card" class="route-card" style="display: none;">
+                        <div class="route-card__header">
+                            <div class="route-card__title">
+                                <i class="fas fa-route text-primary"></i> <span id="route-card-title">Chỉ đường thực tế</span>
+                            </div>
+                            <button type="button" id="route-card-close" class="route-card__close" title="Đóng chỉ đường">&times;</button>
+                        </div>
+                        <div class="route-card__body">
+                            <div class="route-card__points">
+                                <div class="route-point">
+                                    <span class="route-point__dot route-point__dot--start"></span>
+                                    <span id="route-start-text" class="route-point__name">Vị trí của bạn</span>
+                                </div>
+                                <div class="route-point-line"></div>
+                                <div class="route-point">
+                                    <span class="route-point__dot route-point__dot--end"></span>
+                                    <span id="route-end-text" class="route-point__name">Điểm đến</span>
+                                </div>
+                            </div>
+                            <div class="route-card__metrics">
+                                <div class="metric-box">
+                                    <span class="metric-icon"><i class="fas fa-road"></i></span>
+                                    <div class="metric-detail">
+                                        <strong id="route-distance-text">-- km</strong>
+                                        <small>Khoảng cách</small>
+                                    </div>
+                                </div>
+                                <div class="metric-box">
+                                    <span class="metric-icon"><i class="fas fa-car-side"></i></span>
+                                    <div class="metric-detail">
+                                        <strong id="route-duration-text">-- phút</strong>
+                                        <small>Thời gian ước tính</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <a id="btn-open-gmaps" href="#" target="_blank" class="route-card__btn-gmaps">
+                                <i class="fab fa-google"></i> Dẫn đường trên Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            </div>
+
+    <footer class="footer">
+    <div class="footer__inner">
+        <img class="footer__bg-2" src="images/footer-bg-2.png" alt="footer bg 2"/>
+        <img class="footer__bg-3" src="images/footer-bg-3.png" alt="footer bg 3"/>
+        <div class="container">
+            <div class="footer__heading">360° DI TÍCH LỊCH SỬ - VĂN HÓA HUYỆN ĐAN PHƯỢNG, THÀNH PHỐ HÀ NỘI</div>
+            <ul class="f-contact">
+                <li class="f-contact__item">
+                    <span>Cơ quan chủ quản: UBND huyện Đan Phượng - TP. Hà Nội</span>
+                </li>
+                <li class="f-contact__item">
+                    <span>Chịu trách nhiệm thực hiện: Phòng Văn hóa và Thông tin huyện Đan Phượng</span>
+                </li>
+                <li class="f-contact__item">
+                    <i class="fal fa-fw fa-map-marker-alt me-2"></i>
+                    <span>Địa chỉ: Thị trấn Phùng, huyện Đan Phượng, TP. Hà Nội</span>
+                </li>
+                <li class="f-contact__item">
+                    <i class="fal fa-fw fa-phone me-2"></i>
+                    <a href="tel:0243388 3864">Điện thoại: 024.3388 3864</a>
+                </li>
+                <li class="f-contact__item">
+                    <i class="fal fa-fw fa-envelope me-2"></i>
+                    <span>Email: pvhtt_danphuong@hanoi.gov.vn</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">© 2024 UBND huyện Đan Phượng</div>
+    </div>
+</footer>
+</div>
+
+<button class="btn-movetop" type="button" data-target="body">
+    <i class="fa fa-arrow-up"></i>
+</button>
+
+    <script src="vendor/leaflet/leaflet.js"></script>
+    <script src="js/relics-data.js?v=1.0.3"></script>
+    <script src="js/tay-tuu-boundary.js?v=1.0.0"></script>
+    <script src="js/map.js?v=1.4.1"></script>
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v19.0&appId="
+        nonce="uWFE6azL"></script>
+
+</body>
+</html>

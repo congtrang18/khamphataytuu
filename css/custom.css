@@ -1,0 +1,1056 @@
+/* Mixin Responsive*/
+.fix-responsive img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.pagination .page-item {
+  display: inline-block;
+  list-style: none;
+  margin-left: 0;
+}
+.pagination .page-item .page-link {
+  border: 1px solid #e3e3e3;
+}
+.pagination .page-item.active .page-link {
+  color: #ffffff;
+  background-color: #ec3535;
+  border: 1px solid #ec3535;
+}
+
+.product__frame img, .news__frame img, .sample__frame img, .place-thumb-slider__frame img, .md-album__frame img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  object-position: top;
+}
+
+.sample-slider__frame img, .sample-thumb-slider__frame img, .place-slider__frame img {
+  -o-object-fit: contain;
+  object-fit: contain;
+  background: #fff;
+}
+
+.menu-root > .menu-item > .menu-link.active {
+  font-weight: 500 !important;
+}
+
+.md-album .modal-header {
+  padding: 12px 30px;
+}
+.md-album .modal-header .md-album__close {
+  margin-right: -15px;
+}
+
+.place-slider__frame::before {
+  padding-bottom: 50%;
+}
+
+@media (max-width: 575px) {
+  .artifact-content {
+    padding-top: 100px;
+  }
+}
+
+/* Map frame & container */
+.map-frame {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  min-height: 450px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f0f2f5;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  min-height: 450px;
+}
+
+/* Leaflet layer control icon fix */
+.leaflet-control-layers-toggle {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='22' height='22' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='12 2 2 7 12 12 22 7 12 2' fill='%23f1f3f4'/%3E%3Cpolyline points='2 17 12 22 22 17'/%3E%3Cpolyline points='2 12 12 17 22 12'/%3E%3C/svg%3E") !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: 20px 20px !important;
+}
+
+.leaflet-retina .leaflet-control-layers-toggle {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='22' height='22' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='12 2 2 7 12 12 22 7 12 2' fill='%23f1f3f4'/%3E%3Cpolyline points='2 17 12 22 22 17'/%3E%3Cpolyline points='2 12 12 17 22 12'/%3E%3C/svg%3E") !important;
+  background-size: 20px 20px !important;
+}
+
+.leaflet-control-layers {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.leaflet-control-layers-expanded {
+  padding: 10px 14px !important;
+  color: #333;
+}
+
+.leaflet-control-layers-separator {
+  margin: 6px 0 !important;
+  border-top: 1px solid #eee !important;
+}
+
+.boundary-tooltip {
+  font-family: inherit;
+  font-size: 12px;
+  background: rgba(30, 41, 59, 0.9);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+.boundary-tooltip::before {
+  border-top-color: rgba(30, 41, 59, 0.9) !important;
+}
+
+/* Nút định vị GPS trên bản đồ */
+.map-locate-btn {
+  position: absolute;
+  bottom: 25px;
+  right: 18px;
+  z-index: 1000;
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 17px;
+  transition: all 0.2s ease;
+}
+
+.map-locate-btn:hover {
+  background: #f8f9fa;
+  color: #1a73e8;
+  transform: scale(1.05);
+}
+
+.map-locate-btn.is-active {
+  color: #1a73e8;
+  border-color: #1a73e8;
+}
+
+/* Card thông tin chỉ đường */
+.route-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+  width: 320px;
+  max-width: calc(100% - 30px);
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  font-family: inherit;
+  animation: slideDownFade 0.25s ease-out;
+}
+
+@keyframes slideDownFade {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.route-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.route-card__title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.route-card__title i {
+  color: #1a73e8;
+}
+
+.route-card__close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color 0.15s;
+}
+
+.route-card__close:hover {
+  color: #334155;
+}
+
+.route-card__body {
+  padding: 12px 14px;
+}
+
+.route-card__points {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+
+.route-point {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.route-point__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.route-point__dot--start {
+  background: #1a73e8;
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+}
+
+.route-point__dot--end {
+  background: #e63946;
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+}
+
+.route-point-line {
+  position: absolute;
+  left: 8px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: #cbd5e1;
+}
+
+.route-point__name {
+  font-weight: 600;
+  color: #334155;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.route-card__metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.metric-box {
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.metric-icon {
+  font-size: 16px;
+  color: #419481;
+}
+
+.metric-detail strong {
+  display: block;
+  font-size: 14px;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.metric-detail small {
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.route-card__btn-gmaps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 12px;
+  background: #1a73e8;
+  color: #ffffff !important;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: background 0.2s;
+}
+
+.route-card__btn-gmaps:hover {
+  background: #1557b0;
+}
+
+/* Marker vị trí người dùng */
+.user-location-marker {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.user-location-pin {
+  width: 14px;
+  height: 14px;
+  background: #1a73e8;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 2;
+}
+
+.user-location-pulse {
+  width: 32px;
+  height: 32px;
+  background: rgba(26, 115, 232, 0.35);
+  border-radius: 50%;
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  z-index: 1;
+  animation: user-pulse 2s infinite ease-out;
+}
+
+@keyframes user-pulse {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* ===================================
+   Leaflet Popup Di Tích (Chuẩn & Đẹp)
+   =================================== */
+.relic-leaflet-popup .leaflet-popup-content-wrapper {
+  padding: 0 !important;
+  overflow: hidden !important;
+  border-radius: 12px !important;
+  box-shadow: 0 14px 35px -5px rgba(0, 0, 0, 0.22), 0 6px 14px -3px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.relic-leaflet-popup .leaflet-popup-content {
+  margin: 0 !important;
+  width: 490px !important;
+  max-width: calc(100vw - 32px) !important;
+  line-height: 1.5 !important;
+}
+
+.leaflet-popup-tip {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  top: 8px !important;
+  right: 8px !important;
+  padding: 0 !important;
+  color: #94a3b8 !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+  width: 22px !important;
+  height: 22px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  transition: all 0.15s ease !important;
+  z-index: 10 !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover {
+  color: #0f172a !important;
+  background: #f1f5f9 !important;
+}
+
+/* Horizontal Relic Popup Card */
+.relic-popup {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  min-height: 200px !important;
+  background: #ffffff !important;
+  overflow: hidden !important;
+}
+
+.relic-popup__media {
+  flex: 0 0 160px !important;
+  width: 160px !important;
+  overflow: hidden !important;
+  background: #e2e8f0 !important;
+  position: relative !important;
+}
+
+.relic-popup__media img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 200px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  transition: transform 0.3s ease !important;
+}
+
+.relic-popup:hover .relic-popup__media img {
+  transform: scale(1.03) !important;
+}
+
+.relic-popup__body {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  padding: 14px 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  background: #ffffff !important;
+}
+
+.relic-popup__header {
+  padding-right: 18px !important;
+}
+
+.relic-popup__title {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  margin: 0 0 3px 0 !important;
+  line-height: 1.3 !important;
+}
+
+.relic-popup__sub {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  font-size: 12px !important;
+  color: #64748b !important;
+}
+
+.relic-popup__addr {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.relic-popup__addr i {
+  color: #419481 !important;
+  font-size: 12px !important;
+}
+
+.relic-popup__rank-dot {
+  color: #cbd5e1 !important;
+}
+
+.relic-popup__rank {
+  color: #b91c1c !important;
+  font-weight: 600 !important;
+  font-size: 11.5px !important;
+}
+
+.relic-popup__info-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+  padding: 8px 10px !important;
+  background: #f8fafc !important;
+  border: 1px solid #f1f5f9 !important;
+  border-radius: 6px !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+}
+
+.relic-popup__info-row {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 6px !important;
+}
+
+.relic-popup__info-row .info-label {
+  font-weight: 600 !important;
+  color: #475569 !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  font-size: 11.5px !important;
+}
+
+.relic-popup__info-row .info-val {
+  color: #0f172a !important;
+  word-break: break-word !important;
+  min-width: 0 !important;
+}
+
+.relic-popup__info-row .info-val--clamp-1 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.relic-popup__info-row .info-val--clamp-2 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.relic-popup__actions {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 6px !important;
+  margin-top: auto !important;
+  padding-top: 2px !important;
+}
+
+.relic-popup__btn-detail {
+  padding: 8px 10px !important;
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 6px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  transition: all 0.15s ease !important;
+}
+
+.relic-popup__btn-detail i {
+  color: #419481 !important;
+}
+
+.relic-popup__btn-detail:hover {
+  background: #e2e8f0 !important;
+  border-color: #94a3b8 !important;
+}
+
+.relic-popup__btn-route {
+  flex: 1 0 auto !important;
+  padding: 8px 10px !important;
+  background: #1a73e8 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  transition: background 0.15s ease !important;
+  text-decoration: none !important;
+}
+
+.relic-popup__btn-route:hover {
+  background: #1557b0 !important;
+}
+
+.relic-popup__btn-vr {
+  padding: 8px 10px !important;
+  background: #fdf2f8 !important;
+  color: #be185d !important;
+  border: 1px solid #fbcfe8 !important;
+  border-radius: 6px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  transition: all 0.15s ease !important;
+}
+
+.relic-popup__btn-vr:hover {
+  background: #fce7f3 !important;
+  border-color: #f472b6 !important;
+}
+
+/* =======================================================
+   Popup Chi tiết Di tích (Chuẩn màu Concept #419481 & Khoa học)
+   ======================================================= */
+.relic-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.relic-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.relic-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.relic-modal__dialog {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 680px;
+  height: 90vh;
+  max-height: 90vh;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(10px) scale(0.98);
+  transition: transform 0.22s ease;
+}
+
+.relic-modal.is-open .relic-modal__dialog {
+  transform: translateY(0) scale(1);
+}
+
+.relic-modal__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.boss-popup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  color: #1e293b;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Phần ảnh Hero trên cùng */
+.boss-popup__hero {
+  position: relative;
+  width: 100%;
+  height: 225px;
+  background: #1e3a34;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.boss-popup__hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.boss-popup__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(15, 35, 30, 0.35) 50%,
+    rgba(15, 35, 30, 0.88) 100%
+  );
+}
+
+.boss-popup__tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 3;
+  background: #419481;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 8px;
+  line-height: 1.2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.boss-popup__close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 3;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  color: #1e293b;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.boss-popup__close:hover {
+  background: #ffffff;
+  transform: scale(1.06);
+}
+
+.boss-popup__hero-text {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 16px;
+  z-index: 3;
+}
+
+.boss-popup__title {
+  font-size: 25px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 5px 0;
+  line-height: 1.2;
+}
+
+.boss-popup__address {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #d1fae5;
+  letter-spacing: 0.1px;
+}
+
+.boss-popup__address i {
+  color: #6ee7b7;
+  font-size: 12.5px;
+}
+
+/* Hàng 3 cột thông số: Cột Diện tích gọn tự động, 2 cột sau rộng rãi */
+.boss-popup__stats {
+  display: grid;
+  grid-template-columns: auto 1.2fr 1.1fr;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f4f9f8;
+  flex-shrink: 0;
+}
+
+.boss-popup__stat-col {
+  padding: 12px 16px;
+  border-right: 1px solid #e2e8f0;
+  min-width: 0;
+}
+
+.boss-popup__stat-col--compact {
+  padding-right: 20px;
+  white-space: nowrap;
+}
+
+.boss-popup__stat-col:last-child {
+  border-right: none;
+}
+
+.boss-popup__stat-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 3px;
+  white-space: nowrap;
+}
+
+.boss-popup__stat-val {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.38;
+}
+
+.boss-popup__stat-col--compact .boss-popup__stat-val {
+  color: #419481;
+  font-size: 14px;
+}
+
+/* Thanh Tabs chuẩn màu Concept #419481 */
+.boss-popup__tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #ffffff;
+  flex-shrink: 0;
+  overflow-x: auto;
+}
+
+.boss-popup__tab {
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  background: transparent;
+  color: #64748b;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.boss-popup__tab:hover {
+  color: #419481;
+  background: #f4f9f8;
+}
+
+.boss-popup__tab.is-active {
+  border-color: #419481;
+  color: #419481;
+  background: #eef7f5;
+  font-weight: 700;
+}
+
+/* Vùng nội dung văn bản có thanh cuộn & tự giãn theo chiều cao 90vh */
+.boss-popup__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 20px 22px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 14.5px;
+  line-height: 1.72;
+}
+
+.boss-popup__body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.boss-popup__body::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.boss-popup__body::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.boss-popup__panel {
+  display: none;
+}
+
+.boss-popup__panel.is-active {
+  display: block;
+}
+
+.boss-popup__info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+  margin-bottom: 12px;
+}
+
+.boss-popup__info-item {
+  background: #f8fafc;
+  border: 1px solid #edf2f7;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.boss-popup__info-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 2px;
+}
+
+.boss-popup__info-value {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.35;
+}
+
+.boss-popup__desc {
+  margin: 0 0 10px 0;
+  color: #334155;
+  line-height: 1.65;
+}
+
+.boss-popup__desc:last-child {
+  margin-bottom: 0;
+}
+
+.boss-popup__desc strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+/* Hai nút bo tròn ở đáy Popup đồng bộ màu Concept #419481 */
+.boss-popup__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 14px 22px 20px;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.boss-popup__btn {
+  flex: 0 1 calc(50% - 6px);
+  min-width: 180px;
+  height: 44px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none !important;
+  transition: all 0.18s ease;
+}
+
+.boss-popup__btn--vr {
+  background: #f4f9f8;
+  color: #419481 !important;
+  border: 1.5px solid #419481;
+}
+
+.boss-popup__btn--vr:hover {
+  background: #e2f2ee;
+}
+
+.boss-popup__btn--route {
+  background: #419481;
+  color: #ffffff !important;
+  border: 1.5px solid #419481;
+}
+
+.boss-popup__btn--route:hover {
+  background: #317162;
+  border-color: #317162;
+}
+
+@media (max-width: 520px) {
+  .relic-modal {
+    padding: 10px;
+  }
+  .boss-popup__hero {
+    height: 190px;
+  }
+  .boss-popup__title {
+    font-size: 21px;
+  }
+  .boss-popup__stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  .boss-popup__stat-col:last-child {
+    grid-column: 1 / -1;
+    border-top: 1px solid #e2e8f0;
+  }
+  .boss-popup__info-grid {
+    grid-template-columns: 1fr;
+  }
+  .boss-popup__footer {
+    padding: 12px 16px 16px;
+    gap: 10px;
+  }
+  .boss-popup__btn {
+    height: 42px;
+    font-size: 13.5px;
+  }
+}
+
+@media (max-width: 520px) {
+  .relic-leaflet-popup .leaflet-popup-content {
+    width: 285px !important;
+  }
+  .relic-popup {
+    flex-direction: column !important;
+  }
+  .relic-popup__media {
+    flex: none !important;
+    width: 100% !important;
+    height: 125px !important;
+  }
+  .relic-popup__media img {
+    min-height: unset !important;
+  }
+  .relic-popup__actions {
+    flex-wrap: wrap !important;
+  }
+}
+
+/* 360 Banner iframe interactive */
+.banner__bg {
+  z-index: 1 !important;
+}
+.banner__wrapper {
+  z-index: 2 !important;
+}
+
+
+/*# sourceMappingURL=custom.css.map */
