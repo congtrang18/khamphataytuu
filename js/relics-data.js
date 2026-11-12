@@ -23,8 +23,8 @@ window.defaultRoutes = [
 
 window.markersData = {
     "route_1": {
-        "lat": 21.053069353446705,
-        "lng": 105.74254591349383,
+        "lat": 21.05305095674302,
+        "lng": 105.74216688188686,
         "info": {
             "title": "Chùa Bồ Đề",
             "category": "Di tích lịch sử",
@@ -47,8 +47,8 @@ window.markersData = {
         }
     },
     "route_2": {
-         "lat": 21.06772449388266,
-        "lng": 105.74248674232894,
+        "lat": 21.066878,
+        "lng": 105.742508,
         "info": {
             "title": "Chùa Phúc Lý",
             "category": "Di tích lịch sử – văn hóa",
@@ -70,8 +70,8 @@ window.markersData = {
         }
     },
     "route_3": {
-        "lat": 21.055069300939483,
-        "lng":  105.74386374232925,
+        "lat": 21.054842349664877,
+        "lng":  105.74386312003125,
         "info": {
             "title": "Chùa Văn Trì",
             "category": "Di tích kiến trúc nghệ thuật",
@@ -93,8 +93,8 @@ window.markersData = {
         }
     },
     "route_4": {
-        "lat": 21.052016111985115,
-        "lng": 105.74377693882484,
+        "lat": 21.051769987951133,
+        "lng": 105.74379703303944,
         "info": {
             "title": "Đình Ngọa Long",
             "category": "Di tích lịch sử – kiến trúc nghệ thuật",
@@ -116,8 +116,8 @@ window.markersData = {
         }
     },
     "route_5": {
-        "lat": 21.06772449388266,
-        "lng": 105.74248674232894,
+        "lat": 21.066623924607047,
+        "lng": 105.74220668519662,
         "info": {
             "title": "Đình Phúc Lý",
             "category": "Di tích lịch sử – văn hóa",
@@ -162,8 +162,8 @@ window.markersData = {
         }
     },
     "route_7": {
-        "lat": 21.050143589574365,
-        "lng": 105.74156878650655,
+        "lat": 21.049879504143913,
+        "lng": 105.7410088385503,
         "info": {
             "title": "Miếu Đồng Cổ",
             "category": "Di tích lịch sử – kiến trúc nghệ thuật",
@@ -185,8 +185,8 @@ window.markersData = {
         }
     },
     "route_8": {
-        "lat": 21.068955086242756,
-        "lng": 105.73108793558222,
+        "lat": 21.068769414141684,
+        "lng": 105.7311399612142,
         "info": {
             "title": "Chùa Hưng Khánh",
             "category": "Di tích kiến trúc nghệ thuật",
@@ -208,8 +208,8 @@ window.markersData = {
         }
     },
     "route_9": {
-        "lat": 21.069298664899357,
-        "lng": 105.7319221,
+        "lat":  21.06911812090904,
+        "lng": 105.73183889689481,
         "info": {
             "title": "Đình Tây Tựu",
             "category": "Di tích kiến trúc nghệ thuật",
@@ -232,8 +232,8 @@ window.markersData = {
         }
     },
     "route_10": {
-        "lat": 21.06552131892868,
-        "lng": 105.73972855767104,
+        "lat": 21.065306725453773,
+        "lng": 105.73932153782613,
         "info": {
             "title": "Đình Trung Tựu",
             "category": "Di tích lịch sử – kiến trúc nghệ thuật",
@@ -255,8 +255,8 @@ window.markersData = {
         }
     },
     "route_11": {
-        "lat": 21.07539619810955,
-        "lng": 105.7278992826075,
+        "lat": 21.0748614982175,
+        "lng": 105.72800825295887,
         "info": {
             "title": "Miếu Tây Tựu",
             "category": "Di tích kiến trúc nghệ thuật",
@@ -279,8 +279,8 @@ window.markersData = {
         }
     },
     "route_12": {
-        "lat": 21.066768194798055,
-        "lng": 105.73449492391411,
+        "lat": 21.066893535321615,
+        "lng": 105.73442123868415,
         "info": {
             "title": "Nhà Thờ Nguyễn Hữu Liêu",
             "category": "Di tích lịch sử",
@@ -302,8 +302,8 @@ window.markersData = {
         }
     },
     "route_13": {
-        "lat": 21.057583492829007,
-        "lng": 105.74079282494766,
+        "lat": 21.050559787153507,
+        "lng": 105.74140725092863,
         "info": {
             "title": "Đình Nguyên Xá",
             "category": "Di tích lịch sử – văn hóa",
@@ -325,8 +325,8 @@ window.markersData = {
         }
     },
     "route_14": {
-        "lat": 21.051858774216797,
-        "lng": 105.73958845582236,
+        "lat": 21.051652357199718,
+        "lng": 105.73963792726626,
         "info": {
             "title": "Nhà Thờ Họ Nguyễn Đăng",
             "category": "Di tích lịch sử",
@@ -348,8 +348,8 @@ window.markersData = {
         }
     },
     "route_15": {
-        "lat": 21.055069300939483,
-        "lng":  105.74386374232925,
+        "lat": 21.055083386519488,
+        "lng":   105.74386539155873,
         "info": {
             "title": "Miếu Văn Trì (Đền Bà)",
             "category": "Di tích tín ngưỡng",
@@ -371,8 +371,8 @@ window.markersData = {
         }
     },
     "route_16": {
-        "lat": 21.07054968966478,
-        "lng": 105.7255331153421,
+        "lat": 21.07038400784244,
+        "lng":  105.725551029233,
         "info": {
             "title": "Đền Khánh Linh Từ",
             "category": "Di tích tín ngưỡng",
