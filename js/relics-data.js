@@ -298,7 +298,7 @@ window.markersData = {
             "otherIssues": "Nguyễn Hữu Liêu (1532–1597) quê làng Tây Đam, nay là Tây Tựu. Ông là viên tướng có công phò nhà Lê Trung Hưng đánh bại nhà Mạc, lấy lại thành Thăng Long năm 1591. Tổ bảy đời của ông là người Trung Quốc thời Minh, sang buôn bán rồi lấy vợ ở làng Ông Mặc (nay là Hương Mạc, Từ Sơn, Bắc Ninh). Đến đời tổ sáu đời, gia đình di cư sang làng Tây Đam.",
             "activityStatus": "",
             "note": "1964/QĐ-BT ngày 27/8/1996",
-            "imageUrl": "uploads/images/diem-den/nha-tho-nguyen-huu-lieu.png"
+            "imageUrl": "uploads/images/diem-den/nguyen-huu-lieu.png"
         }
     },
     "route_13": {
