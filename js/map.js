@@ -342,7 +342,6 @@
         const safeTitle = title.replace(/'/g, "\\'");
         const imgSrc = info.imageUrl ? info.imageUrl.trim() : 'images/placeholder.png';
         const vrUrl = info.url_vrtour ? info.url_vrtour.trim() : '';
-console.log(vrUrl);
         const leaderTitle = abbot ? 'Trụ trì' : 'Người quản lý';
         const leaderName = abbot || manager || 'Ban quản lý di tích';
 
@@ -740,9 +739,12 @@ console.log(vrUrl);
             const popupHtml = createPopupContent(loc, idx);
             const isMobile = window.innerWidth < 520;
             marker.bindPopup(popupHtml, {
-                maxWidth: isMobile ? 320 : 510,
-                minWidth: isMobile ? 280 : 480,
-                className: 'relic-leaflet-popup'
+              maxWidth: isMobile ? 285 : 340,
+              minWidth: isMobile ? 260 : 320,
+              className: "relic-leaflet-popup",
+              autoPan: true,
+              autoPanPaddingTopLeft: [20, 90], // chừa chỗ cho thanh menu
+              autoPanPaddingBottomRight: [20, 20],
             });
 
             markersLayer.addLayer(marker);

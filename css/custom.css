@@ -364,7 +364,7 @@
 
 .relic-leaflet-popup .leaflet-popup-content {
   margin: 0 !important;
-  width: 490px !important;
+  width: 340px !important;
   max-width: calc(100vw - 32px) !important;
   line-height: 1.5 !important;
 }
@@ -377,46 +377,50 @@
   top: 8px !important;
   right: 8px !important;
   padding: 0 !important;
-  color: #94a3b8 !important;
+  color: #1e293b !important;
+  background: rgba(255, 255, 255, 0.92) !important;
   font-size: 18px !important;
   line-height: 1 !important;
-  width: 22px !important;
-  height: 22px !important;
+  width: 26px !important;
+  height: 26px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   border-radius: 50% !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
   transition: all 0.15s ease !important;
   z-index: 10 !important;
 }
 
 .leaflet-container a.leaflet-popup-close-button:hover {
   color: #0f172a !important;
-  background: #f1f5f9 !important;
+  background: #ffffff !important;
 }
 
 /* Horizontal Relic Popup Card */
+/* Vertical Relic Popup Card: ảnh trên, thông tin dưới */
 .relic-popup {
   display: flex !important;
-  flex-direction: row !important;
+  flex-direction: column !important;   /* trước là row */
   width: 100% !important;
-  min-height: 200px !important;
   background: #ffffff !important;
   overflow: hidden !important;
 }
 
 .relic-popup__media {
-  flex: 0 0 160px !important;
-  width: 160px !important;
+  flex: none !important;
+  width: 100% !important;
+  height: 170px !important;
   overflow: hidden !important;
   background: #e2e8f0 !important;
   position: relative !important;
+  cursor: pointer !important;
 }
 
 .relic-popup__media img {
   width: 100% !important;
   height: 100% !important;
-  min-height: 200px !important;
+  min-height: unset !important;
   object-fit: cover !important;
   object-position: center !important;
   display: block !important;
@@ -438,9 +442,9 @@
   background: #ffffff !important;
 }
 
-.relic-popup__header {
+/* .relic-popup__header {
   padding-right: 18px !important;
-}
+} */
 
 .relic-popup__title {
   font-size: 16px !important;
@@ -1028,16 +1032,8 @@
   .relic-leaflet-popup .leaflet-popup-content {
     width: 285px !important;
   }
-  .relic-popup {
-    flex-direction: column !important;
-  }
   .relic-popup__media {
-    flex: none !important;
-    width: 100% !important;
-    height: 125px !important;
-  }
-  .relic-popup__media img {
-    min-height: unset !important;
+    height: 135px !important;
   }
   .relic-popup__actions {
     flex-wrap: wrap !important;
