@@ -1,5 +1,5 @@
 /**
- * Bản đồ Đan Phượng 360
+ * Bản đồ Tây Tựu 360
  * Sử dụng Google Maps Tile qua Leaflet - Không cần API Key, không lo Referrer
  * Thể hiện đầy đủ chủ quyền Quần đảo Hoàng Sa & Quần đảo Trường Sa (Việt Nam)
  */
@@ -58,12 +58,12 @@
     function initMap() {
         const mapEl = document.getElementById("map");
         if (!mapEl) {
-            console.error('[Bản đồ Đan Phượng] Không tìm thấy phần tử #map!');
+            console.error('[Bản đồ Tây Tựu] Không tìm thấy phần tử #map!');
             return;
         }
 
         if (typeof L === 'undefined') {
-            console.error('[Bản đồ Đan Phượng] Thư viện Leaflet chưa được tải!');
+            console.error('[Bản đồ Tây Tựu] Thư viện Leaflet chưa được tải!');
             return;
         }
 
@@ -177,9 +177,9 @@
             setTimeout(() => { if (map) map.invalidateSize(); }, 600);
             setTimeout(() => { if (map) map.invalidateSize(); }, 1200);
 
-            console.log('[Bản đồ Đan Phượng] Khởi tạo bản đồ thành công!');
+            console.log('[Bản đồ Tây Tựu] Khởi tạo bản đồ thành công!');
         } catch (e) {
-            console.error('[Bản đồ Đan Phượng] Lỗi khi tạo bản đồ:', e);
+            console.error('[Bản đồ Tây Tựu] Lỗi khi tạo bản đồ:', e);
         }
     }
 
