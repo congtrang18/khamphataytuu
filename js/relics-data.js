@@ -204,7 +204,7 @@ window.markersData = {
             "otherIssues": "",
             "activityStatus": "Ngoài việc thờ Phật, chùa là nơi tưởng niệm các anh hùng văn hóa, anh hùng dân tộc có công trong lịch sử và là nơi sinh hoạt văn hóa của làng xã.",
             "note": "06/2000/QĐ-BVHTT ngày 13/4/2000",
-            "imageUrl": "uploads/images/diem-den/chua-khanh-hung.png"
+            "imageUrl": "uploads/images/diem-den/chua-hung-khanh.png"
         }
     },
     "route_9": {
@@ -367,7 +367,7 @@ window.markersData = {
             "otherIssues": "Được xây dựng vào khoảng đầu thế kỷ 17, trùng tu năm 2001. Không có tài liệu ghi chép niên đại, theo truyền tụng Đền Bà được xây dựng cùng thời kỳ Chùa Văn Trì. Năm 1960 bị tháo dỡ; Nhân dân làng phục dựng lại năm 2009",
             "activityStatus": "Trong Miếu còn lưu giữ được di vật giá trị như: 02 cụ voi, 02 bộ lục bộ. Là nơi tâm linh để Nhân dân kêu cầu giải tai trừ ách cầu mong mưa thuận gió hoà, quốc thái dân an.",
             "note": "Nằm cùng thửa đất và sát quần thể Đình, Chùa Văn Trì (Đang hoàn thiện hồ sơ đề nghị xếp hạng di tích Thành phố)",
-            "imageUrl": "uploads/images/diem-den/mieu-van-tri.png"
+            "imageUrl": "uploads/images/diem-den/mieu-van-tri.jpeg"
         }
     },
     "route_16": {
