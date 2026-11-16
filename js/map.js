@@ -511,7 +511,7 @@
         if (!modal) return;
         modal.classList.remove('is-open');
         modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
+        document.body.style.overflow = document.querySelector('.is-pseudo-fullscreen') ? 'hidden' : '';
     }
 
     /**
@@ -795,6 +795,44 @@
                 locateUser();
             });
         }
+
+        // Nút bật/tắt chế độ toàn màn hình
+        let fsPlaceholder = null;
+        function toggleFullscreen(force) {
+        const isOn = frame.classList.contains("is-pseudo-fullscreen");
+        const on = force === undefined ? !isOn : force;
+        if (on === isOn) return;
+
+        if (on) {
+            // Đánh dấu vị trí cũ rồi đưa map ra body để thoát khỏi stacking context của header/footer
+            fsPlaceholder = document.createComment("map-frame");
+            frame.parentNode.insertBefore(fsPlaceholder, frame);
+            document.body.appendChild(frame);
+        } else if (fsPlaceholder) {
+            // Trả map về đúng vị trí ban đầu
+            fsPlaceholder.parentNode.insertBefore(frame, fsPlaceholder);
+            fsPlaceholder.remove();
+            fsPlaceholder = null;
+        }
+
+        frame.classList.toggle("is-pseudo-fullscreen", on);
+        document.body.style.overflow = on ? "hidden" : "";
+        fsBtn.title = on ? "Thoát toàn màn hình" : "Toàn màn hình";
+        fsBtn.querySelector("i").className = on ? "fas fa-compress" : "fas fa-expand";
+        requestAnimationFrame(() => map.invalidateSize());
+        }
+
+        const fsBtn = document.getElementById("btn-fullscreen");
+        const frame = document.getElementById("map-frame");
+        if (fsBtn && frame) {
+        fsBtn.addEventListener("click", () => toggleFullscreen());
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && !document.querySelector(".relic-modal.is-open")) {
+            toggleFullscreen(false);
+            }
+        });
+        }
+
 
         // Gắn sự kiện nút đóng khung chỉ đường
         const closeCardBtn = document.getElementById('route-card-close');

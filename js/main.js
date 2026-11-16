@@ -161,6 +161,22 @@ $(document).ready(function () {
     const $search = $('.js-destination-search');
     const $dropdown = $('.js-destination-dropdown');
     const $empty = $('.js-destination-empty');
+    const $btn = $('#about-toggle');
+    const $box = $('#about-content');
+    if (!$btn.length || !$box.length) return;
+
+    $btn.on('click', function () {
+        const open = $box.toggleClass('is-expanded').hasClass('is-expanded');
+
+        $btn.attr('aria-expanded', open);
+        $btn.find('.about__toggle-text').text(open ? 'THU GỌN' : 'XEM THÊM');
+        $btn.find('i').attr('class', open ? 'fas fa-chevron-up' : 'fas fa-chevron-down');
+
+        // Thu gọn thì cuộn về đầu mục Giới thiệu
+        if (!open) {
+            document.getElementById('s-about').scrollIntoView({ behavior: 'smooth' });
+        }
+    });
 
     function normalizeText(text) {
         return String(text || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase().trim();

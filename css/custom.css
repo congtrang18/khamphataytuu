@@ -18,13 +18,19 @@
   border: 1px solid #ec3535;
 }
 
-.product__frame img, .news__frame img, .sample__frame img, .place-thumb-slider__frame img, .md-album__frame img {
+.product__frame img,
+.news__frame img,
+.sample__frame img,
+.place-thumb-slider__frame img,
+.md-album__frame img {
   -o-object-fit: cover;
   object-fit: cover;
   object-position: top;
 }
 
-.sample-slider__frame img, .sample-thumb-slider__frame img, .place-slider__frame img {
+.sample-slider__frame img,
+.sample-thumb-slider__frame img,
+.place-slider__frame img {
   -o-object-fit: contain;
   object-fit: contain;
   background: #fff;
@@ -108,7 +114,7 @@
   border: none;
   border-radius: 4px;
   padding: 4px 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .boundary-tooltip::before {
@@ -147,6 +153,27 @@
   border-color: #1a73e8;
 }
 
+/* Nút toàn màn hình: nằm ngay trên nút định vị */
+.map-fullscreen-btn {
+  bottom: 75px; /* 25px + 40px nút định vị + 10px khoảng cách */
+}
+
+/* Fullscreen giả bằng CSS (dự phòng cho iPhone Safari) */
+.map-frame.is-pseudo-fullscreen {
+  position: fixed !important;
+  inset: 0;
+  width: 100vw;
+  height: 100vh !important;
+  height: 100dvh !important;
+  min-height: 0;
+  border-radius: 0;
+  z-index: 99990; /* thấp hơn .relic-modal (99999) */
+}
+.map-frame.is-pseudo-fullscreen #map {
+  height: 100%;
+  min-height: 0;
+}
+
 /* Card thông tin chỉ đường */
 .route-card {
   position: absolute;
@@ -157,7 +184,9 @@
   max-width: calc(100% - 30px);
   background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.2),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.08);
   overflow: hidden;
   font-family: inherit;
@@ -165,8 +194,14 @@
 }
 
 @keyframes slideDownFade {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .route-card__header {
@@ -347,8 +382,14 @@
 }
 
 @keyframes user-pulse {
-  0% { transform: scale(0.5); opacity: 1; }
-  100% { transform: scale(1.6); opacity: 0; }
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
 }
 
 /* ===================================
@@ -358,7 +399,9 @@
   padding: 0 !important;
   overflow: hidden !important;
   border-radius: 12px !important;
-  box-shadow: 0 14px 35px -5px rgba(0, 0, 0, 0.22), 0 6px 14px -3px rgba(0, 0, 0, 0.1) !important;
+  box-shadow:
+    0 14px 35px -5px rgba(0, 0, 0, 0.22),
+    0 6px 14px -3px rgba(0, 0, 0, 0.1) !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
 
@@ -401,7 +444,7 @@
 /* Vertical Relic Popup Card: ảnh trên, thông tin dưới */
 .relic-popup {
   display: flex !important;
-  flex-direction: column !important;   /* trước là row */
+  flex-direction: column !important; /* trước là row */
   width: 100% !important;
   background: #ffffff !important;
   overflow: hidden !important;
@@ -627,7 +670,9 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.22s ease, visibility 0.22s ease;
+  transition:
+    opacity 0.22s ease,
+    visibility 0.22s ease;
 }
 
 .relic-modal.is-open {
@@ -680,7 +725,13 @@
   height: 100%;
   background: #ffffff;
   color: #1e293b;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Montserrat",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
 }
 
 /* Phần ảnh Hero trên cùng */
@@ -745,7 +796,9 @@
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.15s ease, background 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
 }
 
 .boss-popup__close:hover {
@@ -1048,115 +1101,223 @@
   z-index: 2 !important;
 }
 
-
 /*# sourceMappingURL=custom.css.map */
 
-
-  html { scroll-behavior: smooth; }
-  section[id], footer[id] { scroll-margin-top: 90px; }
+html {
+  scroll-behavior: smooth;
+}
+section[id],
+footer[id] {
+  scroll-margin-top: 90px;
+}
 /* ===== HEADER ===== */
 .header .header__wrapper {
-    width: 100% !important;
-    max-width: 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 .header .header__wrapper > .container {
-    width: 100% !important;
-    max-width: 1320px !important;
-    margin: 0 auto !important;
+  width: 100% !important;
+  max-width: 1320px !important;
+  margin: 0 auto !important;
 }
 
 /* 3 cột: logo | menu (giữa) | user (phải) */
 .header .header__inner {
-    display: grid !important;
-    grid-template-columns: 1fr auto !important;   /* logo | menu */
-    align-items: center !important;
-    width: 100% !important;
-    max-width: 100% !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto !important; /* logo | menu */
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 .h-logo {
-    justify-self: start;
-    flex-shrink: 0;
+  justify-self: start;
+  flex-shrink: 0;
 }
 
 .h-nav {
-    justify-self: end;
-    display: block;
-    margin: 0;
+  justify-self: end;
+  display: block;
+  margin: 0;
 }
 .h-nav__list {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 8px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.h-nav__item { margin: 0; }
+.h-nav__item {
+  margin: 0;
+}
 .h-nav__link {
-    display: block;
-    padding: 8px 16px;
-    font-size: 15px;
-    font-weight: 600;
-    white-space: nowrap;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 999px;
-    transition: background .2s, color .2s;
+  display: block;
+  padding: 8px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 999px;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 .h-nav__link:hover,
 .h-nav__link.is-active {
-    background: rgba(255, 255, 255, .18);
-    color: #ffd700;
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffd700;
 }
 
 .header__elements {
-    justify-self: end;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 .h-user {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, .6);
-    border-radius: 50%;
-    text-decoration: none;
-    transition: background .2s;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background 0.2s;
 }
-.h-user:hover { background: rgba(255, 255, 255, .2); color: #fff; }
+.h-user:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
 .h-toggle {
-    display: none;
-    background: none;
-    border: 0;
-    color: #fff;
-    font-size: 22px;
+  display: none;
+  background: none;
+  border: 0;
+  color: #fff;
+  font-size: 22px;
 }
 
 /* ===== MOBILE ===== */
 @media (max-width: 992px) {
-    .header .header__inner {
-        grid-template-columns: 1fr auto !important;
-    }
-    .h-toggle { display: block; }
-    .h-nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #fff;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
-        padding: 8px 16px;
-    }
-    .h-nav.is-open { display: block; }
-    .h-nav__list { flex-direction: column; align-items: stretch; gap: 0; }
-    .h-nav__link { color: #333; border-radius: 6px; }
-    .h-nav__link:hover,
-    .h-nav__link.is-active { background: #f3f3f3; color: #dc3545; }
+  .header .header__inner {
+    grid-template-columns: 1fr auto !important;
+  }
+  .h-toggle {
+    display: block;
+  }
+  .h-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 8px 16px;
+  }
+  .h-nav.is-open {
+    display: block;
+  }
+  .h-nav__list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .h-nav__link {
+    color: #333;
+    border-radius: 6px;
+  }
+  .h-nav__link:hover,
+  .h-nav__link.is-active {
+    background: #f3f3f3;
+    color: #dc3545;
+  }
+}
+
+/* Phần hiện sẵn + lớp mờ dần ở cuối đoạn 2 */
+.about__lead {
+  position: relative;
+}
+.about__lead::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    var(--about-bg)
+  );
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.about__content.is-expanded .about__lead::after {
+  opacity: 0;
+}
+
+/* Phần ẩn trượt xuống */
+.about__more {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 0.5s ease,visibility 0s 0.5s;
+}
+.about__more-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+.about__content.is-expanded .about__more {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition:grid-template-rows 0.5s ease,visibility 0s;
+}
+
+/* Nút vàng */
+.about__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 10px 28px;
+  border: 0;
+  border-radius: 999px;
+  background: #ffc20e;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.about__toggle:hover {
+  background: #ffd34d;
+  color: #1e3a34;
+  transform: translateY(-1px);
+}
+.about__toggle i {
+  font-size: 12px;
+}
+
+/* Ảnh dính ở đầu cột khi chữ mở dài */
+@media (min-width: 992px) {
+  .about__media {
+    position: sticky;
+    top: 100px;
+  }
+}
+
+/* Điện thoại: nút rộng hết chiều ngang */
+@media (max-width: 991px) {
+  .about__toggle {
+    width: 100%;
+  }
 }
