@@ -10,6 +10,7 @@
     const DEFAULT_ZOOM = 14;
 
     let map = null;
+    let markerRefs = [];
     let markersLayer = null;
     let routeLine = null;
     let activeRouteGroup = null;
@@ -533,7 +534,11 @@
         if (durEl) durEl.textContent = durationText || '-- phút';
         if (gmapsBtn) gmapsBtn.href = gmapsUrl || '#';
 
-        card.style.display = 'block';
+        card.classList.add("is-open");
+        const toggleBtn = document.getElementById("btn-route-toggle");
+        if (toggleBtn) {
+          toggleBtn.classList.add("has-route", "is-active");
+        }
     }
 
     /**
@@ -548,8 +553,10 @@
             map.removeLayer(routeLine);
             routeLine = null;
         }
-        const card = document.getElementById('route-card');
-        if (card) card.style.display = 'none';
+        const card = document.getElementById("route-card");
+        if (card) card.classList.remove("is-open");
+        const toggleBtn = document.getElementById("btn-route-toggle");
+        if (toggleBtn) toggleBtn.classList.remove("has-route", "is-active");
     }
 
     /**
@@ -709,6 +716,58 @@
         }
     }
 
+
+    /* ===== Danh sách di tích ===== */
+    function isMobileView() { return window.innerWidth < 576; }
+
+    function setListOpen(open) {
+        const list = document.getElementById('relic-list');
+        if (!list) return;
+        list.classList.toggle('is-open', open);
+
+        // Chừa chỗ bên trái cho panel khi popup tự cuộn bản đồ
+        const left = open && !isMobileView() ? 340 : 20;
+        markerRefs.forEach(m => {
+            if (m && m.getPopup()) m.getPopup().options.autoPanPaddingTopLeft = [left, 90];
+        });
+    }
+
+    function setActiveItem(idx) {
+        document.querySelectorAll('.relic-list__item').forEach(el => {
+            el.classList.toggle('is-active', Number(el.dataset.idx) === idx);
+        });
+    }
+
+    function renderRelicList(locations) {
+        const body = document.getElementById('relic-list-body');
+        if (!body) return;
+        body.innerHTML = locations.map((loc, idx) => {
+            const info = loc.info || {};
+            const img = info.imageUrl ? info.imageUrl.trim() : 'images/placeholder.png';
+            return `
+                <div class="relic-list__item" data-idx="${idx}">
+                    <div class="relic-list__thumb">
+                        <img src="${img}" alt="" onerror="this.onerror=null; this.src='images/placeholder.png';">
+                    </div>
+                    <div class="relic-list__info">
+                        <h4 class="relic-list__title">${info.title || ''}</h4>
+                        <div class="relic-list__addr">${info.description || ''}</div>
+                        ${info.ranking ? `<div class="relic-list__rank">${info.ranking}</div>` : ''}
+                    </div>
+                </div>`;
+        }).join('');
+    }
+
+    // Bấm một di tích trong danh sách: bay tới marker và mở popup
+    function focusRelic(idx) {
+        const marker = markerRefs[idx];
+        if (!marker || !map) return;
+
+        if (isMobileView()) setListOpen(false); // điện thoại: thu panel để thấy popup
+        map.setView(marker.getLatLng(), Math.max(map.getZoom(), 16), { animate: true });
+        marker.openPopup();
+    }
+
     /**
      * Render các markers và vẽ tuyến đường
      */
@@ -719,13 +778,17 @@
         clearRoute();
 
         if (!Array.isArray(locations) || locations.length === 0) {
-            map.setView(DEFAULT_CENTER, DEFAULT_ZOOM);
+           markerRefs = [];
+           renderRelicList([]);
+           map.setView(DEFAULT_CENTER, DEFAULT_ZOOM);
             return;
         }
 
         const latLngs = [];
         const markerIcon = createCustomMarkerIcon();
         currentRenderedLocations = locations;
+        markerRefs = [];
+        renderRelicList(locations);
 
         locations.forEach((loc, idx) => {
             const lat = Number(loc.lat);
@@ -736,6 +799,8 @@
             latLngs.push(latLng);
 
             const marker = L.marker(latLng, { icon: markerIcon });
+            markerRefs[idx] = marker;
+            marker.on('popupopen', () => setActiveItem(idx));
             const popupHtml = createPopupContent(loc, idx);
             const isMobile = window.innerWidth < 520;
             marker.bindPopup(popupHtml, {
@@ -743,7 +808,9 @@
               minWidth: isMobile ? 260 : 320,
               className: "relic-leaflet-popup",
               autoPan: true,
-              autoPanPaddingTopLeft: [20, 90], // chừa chỗ cho thanh menu
+              autoPanPaddingTopLeft: [
+                (document.getElementById('relic-list')?.classList.contains('is-open') && !isMobileView()) ? 340 : 20,
+                90], // chừa chỗ cho thanh menu
               autoPanPaddingBottomRight: [20, 20],
             });
 
@@ -796,6 +863,22 @@
             });
         }
 
+        // Danh sách di tích
+const listBody = document.getElementById('relic-list-body');
+if (listBody) {
+    listBody.addEventListener('click', function (e) {
+        const item = e.target.closest('.relic-list__item');
+        if (item) focusRelic(Number(item.dataset.idx));
+    });
+}
+const listCloseBtn = document.getElementById('relic-list-close');
+const listToggleBtn = document.getElementById('btn-list-toggle');
+if (listCloseBtn) listCloseBtn.addEventListener('click', () => setListOpen(false));
+if (listToggleBtn) listToggleBtn.addEventListener('click', () => setListOpen(true));
+
+// Máy tính mở sẵn, điện thoại đóng sẵn
+setListOpen(!isMobileView());
+
         // Nút bật/tắt chế độ toàn màn hình
         let fsPlaceholder = null;
         function toggleFullscreen(force) {
@@ -835,10 +918,21 @@
 
 
         // Gắn sự kiện nút đóng khung chỉ đường
+       // Nút × trên card: chỉ thu card lại (tuyến đường vẫn giữ trên bản đồ)
+        const routeCard = document.getElementById('route-card');
         const closeCardBtn = document.getElementById('route-card-close');
-        if (closeCardBtn) {
+        const routeToggleBtn = document.getElementById('btn-route-toggle');
+
+        if (closeCardBtn && routeCard) {
             closeCardBtn.addEventListener('click', function () {
-                clearRoute();
+                routeCard.classList.remove('is-open');
+            });
+        }
+
+        // Icon bật/tắt card
+        if (routeToggleBtn && routeCard) {
+            routeToggleBtn.addEventListener('click', function () {
+                routeCard.classList.toggle('is-open');
             });
         }
 

@@ -157,10 +157,8 @@ $(document).ready(function () {
     });
 });
 
+// ===== Giới thiệu: XEM THÊM / THU GỌN =====
 $(document).ready(function () {
-    const $search = $('.js-destination-search');
-    const $dropdown = $('.js-destination-dropdown');
-    const $empty = $('.js-destination-empty');
     const $btn = $('#about-toggle');
     const $box = $('#about-content');
     if (!$btn.length || !$box.length) return;
@@ -177,6 +175,13 @@ $(document).ready(function () {
             document.getElementById('s-about').scrollIntoView({ behavior: 'smooth' });
         }
     });
+});
+
+// ===== Tìm kiếm địa điểm / tuyến du lịch =====
+$(document).ready(function () {
+    const $search = $('.js-destination-search');
+    const $dropdown = $('.js-destination-dropdown');
+    const $empty = $('.js-destination-empty');
 
     function normalizeText(text) {
         return String(text || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase().trim();
@@ -189,7 +194,6 @@ $(document).ready(function () {
         const keys = Object.keys(markersData);
         if (keys.length === 0) return;
 
-        // Xóa các item cũ và render danh sách đúng theo relics-data.js
         $dropdown.find('.js-destination-item').remove();
         keys.forEach((routeKey, index) => {
             const item = markersData[routeKey];

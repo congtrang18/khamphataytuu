@@ -331,7 +331,7 @@
             </div>
         </div>
     </div>
-</section>
+            </section>
             <section class="counter section">
                 <img class="section__bg" src="images/counter-bg.png" alt="Counter background">
                 <div class="container">
@@ -442,11 +442,25 @@
                 <div>
                     <div class="map-frame" id="map-frame">
                         <div id="map"></div>
-
+                        <!-- Danh sách di tích -->
+                        <div id="relic-list" class="relic-list">
+                            <div class="relic-list__header">
+                                <span><i class="fas fa-landmark"></i> Danh sách di tích</span>
+                                <button type="button" id="relic-list-close" class="relic-list__close" title="Thu gọn">&times;</button>
+                            </div>
+                            <div id="relic-list-body" class="relic-list__body"></div>
+                        </div>
+                        <button type="button" id="btn-list-toggle" class="map-list-toggle" title="Danh sách di tích">
+                            <i class="fas fa-list"></i>
+                        </button>
+                        <!-- Nút bật/tắt khung chỉ đường -->
+                        <button type="button" id="btn-route-toggle" class="map-locate-btn map-route-toggle" title="Thông tin chỉ đường">
+                            <i class="fas fa-route"></i>
+                        </button>
                         <!-- Nút toàn màn hình -->
                         <button type="button" id="btn-fullscreen" class="map-locate-btn map-fullscreen-btn" title="Toàn màn hình">
-    <i class="fas fa-expand"></i>
-</button>
+                            <i class="fas fa-expand"></i>
+                        </button>
 
                         <!-- Nút định vị GPS của người dùng -->
                         <button type="button" id="btn-user-locate" class="map-locate-btn" title="Vị trí của bạn">
@@ -455,14 +469,13 @@
                        
 
                         <!-- Khung thông tin lộ trình & quãng đường -->
-                        <div id="route-card" class="route-card" style="display: none;">
+                        <div id="route-card" class="route-card" >
                             <div class="route-card__header">
                                 <div class="route-card__title">
                                     <i class="fas fa-route text-primary"></i> <span id="route-card-title">Chỉ đường thực
                                         tế</span>
                                 </div>
-                                <button type="button" id="route-card-close" class="route-card__close"
-                                    title="Đóng chỉ đường">&times;</button>
+                                <button type="button" id="route-card-close" class="route-card__close" title="Đóng chỉ đường">&times;</button>
                             </div>
                             <div class="route-card__body">
                                 <div class="route-card__points">

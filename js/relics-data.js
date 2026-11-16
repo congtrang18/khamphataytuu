@@ -66,7 +66,7 @@ window.markersData = {
             "otherIssues": "",
             "activityStatus": "",
             "note": "774/QĐ-BT ngày 21/6/1993",
-            "imageUrl": "uploads/images/diem-den/chua-phuc-ly.png"
+            "imageUrl": "uploads/images/diem-den/chua-phuc-ly.jpg"
         }
     },
     "route_3": {
@@ -89,7 +89,7 @@ window.markersData = {
             "otherIssues": "Tấm bia đặt bên đình làng ghi chùa được xây năm Cảnh Hưng thứ nhất (1740). Chùa đã qua nhiều lần trùng tu, gần nhất vào năm 1989.",
             "activityStatus": "Kiến trúc chùa mang dáng dấp chung của chùa làng Bắc Bộ. Giá trị nổi bật là hơn 40 pho tượng: tượng đất, tượng gỗ quý, tượng đồng và phù điêu. Chùa còn quả chuông đúc thời Tây Sơn; niên hiệu trên chuông đã bị đục xóa.",
             "note": "490/QĐ ngày 22/4/1992",
-            "imageUrl": "uploads/images/diem-den/chua-van-tri.png"
+            "imageUrl": "uploads/images/diem-den/chua-van-tri.jpg"
         }
     },
     "route_4": {
@@ -181,7 +181,7 @@ window.markersData = {
             "otherIssues": "Tương truyền miếu có từ đầu Công nguyên. Theo sử sách, thần phả và truyền thuyết, thần Đồng Cổ báo mộng giúp các vua Lý đánh giặc Chiêm Thành và dẹp loạn Tam Vương. Vua cho dựng miếu thờ và lập lễ Minh thệ. Theo tư liệu lưu tại miếu, thần được ban 62 đạo sắc phong qua các triều Lý, Trần, Lê, Tây Sơn, Nguyễn.",
             "activityStatus": "Trước miếu có hồ bán nguyệt, qua sân rộng là nhà Tiền tế 5 gian lợp ngói mũi hài, nhiều mảng hoa văn mang phong cách thời Lê. Cuối năm 2007, đoàn khảo cổ tìm thấy tầng văn hóa và mộ táng giai đoạn Đông Sơn, cùng phế tích lò nung vật liệu thời Lê (thế kỷ XVII–XVIII).",
             "note": "100/VH-QĐ 26/11/1989",
-            "imageUrl": "uploads/images/diem-den/mieu-dong-co.png"
+            "imageUrl": "uploads/images/diem-den/mieu-dong-co.jpg"
         }
     },
     "route_8": {
@@ -251,7 +251,7 @@ window.markersData = {
             "otherIssues": "",
             "activityStatus": "Đình còn giữ khám thờ và cỗ ngai bài vị sơn son thếp vàng, hương án, chiêng đồng, hoành phi, câu đối. Ngoài ra còn có cây đèn, cây nến, lọ hoa và tàn lọng.",
             "note": "310/QĐ-BT ngày 13/02/1996",
-            "imageUrl": "uploads/images/diem-den/dinh-trung-tuu.png"
+            "imageUrl": "uploads/images/diem-den/dinh-trung-tuu.jpg"
         }
     },
     "route_11": {

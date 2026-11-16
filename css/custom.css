@@ -55,13 +55,26 @@
   .artifact-content {
     padding-top: 100px;
   }
+  .route-card {
+    right: 18px;
+    bottom: 175px;
+    max-width: calc(100% - 36px);
+  }
+  .relic-list {
+    top: auto;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    width: auto;
+    height: 40%;
+  }
 }
 
 /* Map frame & container */
 .map-frame {
   position: relative;
   width: 100%;
-  height: 520px;
+  height: 600px;
   min-height: 450px;
   border-radius: 8px;
   overflow: hidden;
@@ -158,6 +171,13 @@
   bottom: 75px; /* 25px + 40px nút định vị + 10px khoảng cách */
 }
 
+/* Nút bật/tắt card chỉ đường: nằm trên nút fullscreen, chỉ hiện khi có tuyến */
+.map-route-toggle {
+  bottom: 125px; /* 75px + 40px + 10px */
+  display: none;
+}
+.map-route-toggle.has-route { display: flex; }
+
 /* Fullscreen giả bằng CSS (dự phòng cho iPhone Safari) */
 .map-frame.is-pseudo-fullscreen {
   position: fixed !important;
@@ -177,11 +197,12 @@
 /* Card thông tin chỉ đường */
 .route-card {
   position: absolute;
-  top: 15px;
-  left: 15px;
+  right: 68px;      /* nằm bên trái cột nút */
+  bottom: 25px;
   z-index: 1000;
+  display: none;
   width: 320px;
-  max-width: calc(100% - 30px);
+  max-width: calc(100% - 86px);
   background: #ffffff;
   border-radius: 12px;
   box-shadow:
@@ -190,18 +211,13 @@
   border: 1px solid rgba(0, 0, 0, 0.08);
   overflow: hidden;
   font-family: inherit;
-  animation: slideDownFade 0.25s ease-out;
+  animation: slideInRight 0.25s ease-out;
 }
+.route-card.is-open { display: block; }
 
-@keyframes slideDownFade {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 .route-card__header {
@@ -1306,6 +1322,111 @@ footer[id] {
 .about__toggle i {
   font-size: 12px;
 }
+
+/* ===== Danh sách di tích trên bản đồ ===== */
+.relic-list {
+  position: absolute;
+  top: 80px;      /* chừa chỗ cho nút zoom của Leaflet */
+  left: 12px;
+  bottom: 12px;
+  z-index: 1000;
+  width: 300px;
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, .08);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, .2);
+  overflow: hidden;
+}
+.relic-list.is-open { display: flex; }
+
+.relic-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #f4f9f8;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+}
+.relic-list__header i { color: #419481; margin-right: 4px; }
+.relic-list__close {
+  background: none;
+  border: 0;
+  font-size: 22px;
+  line-height: 1;
+  color: #94a3b8;
+  cursor: pointer;
+}
+.relic-list__close:hover { color: #334155; }
+
+.relic-list__body { flex: 1; min-height: 0; overflow-y: auto; }
+.relic-list__body::-webkit-scrollbar { width: 6px; }
+.relic-list__body::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+.relic-list__item {
+  display: flex;
+  gap: 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #f1f5f9;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  transition: background .15s;
+}
+.relic-list__item:hover { background: #f8fafc; }
+.relic-list__item.is-active { background: #eef7f5; border-left-color: #419481; }
+
+.relic-list__thumb {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 52px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+.relic-list__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.relic-list__info { min-width: 0; }
+.relic-list__title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.3;
+  margin: 0 0 3px;
+}
+.relic-list__addr {
+  font-size: 11.5px;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.relic-list__rank { font-size: 11px; font-weight: 600; color: #b91c1c; }
+
+/* Nút mở danh sách (chỉ hiện khi panel đang đóng) */
+.map-list-toggle {
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  z-index: 1000;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .18);
+  color: #444;
+  font-size: 17px;
+  cursor: pointer;
+}
+.map-list-toggle:hover { color: #419481; }
+.relic-list.is-open ~ .map-list-toggle { display: none; }
 
 /* Ảnh dính ở đầu cột khi chữ mở dài */
 @media (min-width: 992px) {
