@@ -41,11 +41,12 @@ canvas#fx{position:fixed;inset:0;width:100%;height:100%;display:block}
 @keyframes run{from{left:-25%}to{left:105%}}
 
 /* ---- Màn chờ ---- */
-#idle{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 5vw}
-#idle .org{font-family:var(--display);font-weight:700;font-size:clamp(22px,3.8vmin,54px);color:var(--cyan);letter-spacing:.1em;text-transform:uppercase}
-#idle h1{margin:.25em 0 .1em;font-size:clamp(48px,13vmin,200px)}
-#idle h2{margin:.3em 0 0;font-family:var(--display);font-weight:600;font-size:clamp(20px,4.4vmin,64px);color:var(--gold);
-  text-shadow:0 0 24px rgba(255,203,69,.5)}
+#idle{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 4vw}
+#idle .org{font-family:var(--display);font-weight:700;font-size:clamp(22px,3.8vmin,54px);color:var(--cyan);letter-spacing:.1em;text-transform:uppercase;
+  text-shadow:0 0 18px rgba(95,246,220,.45)}
+#idle h2{margin:.55em 0 .15em;font-family:var(--display);font-weight:700;font-size:clamp(16px,2.8vmin,38px);color:var(--gold);
+  letter-spacing:.26em;text-transform:uppercase;text-shadow:0 0 24px rgba(255,203,69,.5)}
+#idle h1{margin:.08em 0 .1em;font-size:clamp(34px,8.5vmin,132px);line-height:1.14}
 #operator{position:fixed;left:20px;bottom:16px;font-size:13px;color:rgba(242,255,252,.38);line-height:1.7;text-align:left;max-width:calc(100% - 160px)}
 #operator b{color:rgba(242,255,252,.6);font-weight:600}
 #startBtn{position:fixed;right:20px;bottom:16px;background:transparent;border:1px solid rgba(242,255,252,.2);
@@ -129,8 +130,8 @@ body.site-live{cursor:auto}
 
 <section class="scene on" id="idle">
   <div class="org">UBND Phường Tây Tựu</div>
-  <h1 class="glow">Ra mắt</h1>
-  <h2>Bản đồ số Di tích Phường Tây Tựu</h2>
+  <h2>Ra mắt</h2>
+  <h1 class="glow">Bản đồ số Di tích<br>Phường Tây Tựu</h1>
   <div class="beam-line"></div>
 </section>
 
