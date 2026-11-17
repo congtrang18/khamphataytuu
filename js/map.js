@@ -8,6 +8,11 @@
 
     const DEFAULT_CENTER = [21.065, 105.742]; // Tâm Phường Tây Tựu, Hà Nội
     const DEFAULT_ZOOM = 14;
+   // Giới hạn trong Hà Nội
+    const MAP_BOUNDS = [
+            [20.55, 105.25],   // góc Tây Nam
+            [21.40, 106.05]    // góc Đông Bắc
+        ];
 
     let map = null;
     let bgm = null;          // nhạc nền
@@ -81,9 +86,12 @@
             map = L.map('map', {
                 center: DEFAULT_CENTER,
                 zoom: DEFAULT_ZOOM,
-                minZoom: 4,
+                minZoom: 10,
                 maxZoom: 19,
-                scrollWheelZoom: true
+                maxBounds: MAP_BOUNDS,
+                maxBoundsViscosity: 1.0,
+                scrollWheelZoom: true,
+                preferCanvas: true
             });
 
             // 1. Google Maps Road Map layer (tiếng Việt, không cần API Key, CDN siêu nhanh)
@@ -999,7 +1007,10 @@
         document.body.style.overflow = on ? "hidden" : "";
         fsBtn.title = on ? "Thoát toàn màn hình" : "Toàn màn hình";
         fsBtn.querySelector("i").className = on ? "fas fa-compress" : "fas fa-expand";
-        requestAnimationFrame(() => map.invalidateSize());
+        requestAnimationFrame(() => {
+            map.invalidateSize();
+            map.setMinZoom(map.getBoundsZoom(MAP_BOUNDS, true));
+        });
         }
 
         const fsBtn = document.getElementById("btn-fullscreen");
