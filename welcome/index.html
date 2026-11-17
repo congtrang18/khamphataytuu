@@ -44,8 +44,8 @@ canvas#fx{position:fixed;inset:0;width:100%;height:100%;display:block}
 #idle{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 4vw}
 #idle .org{font-family:var(--display);font-weight:700;font-size:clamp(22px,3.8vmin,54px);color:var(--cyan);letter-spacing:.1em;text-transform:uppercase;
   text-shadow:0 0 18px rgba(95,246,220,.45)}
-#idle h2{margin:.55em 0 .15em;font-family:var(--display);font-weight:700;font-size:clamp(16px,2.8vmin,38px);color:var(--gold);
-  letter-spacing:.26em;text-transform:uppercase;text-shadow:0 0 24px rgba(255,203,69,.5)}
+#idle h2{margin:.35em 0 .15em;font-family:var(--display);font-weight:700;font-size:clamp(22px,3.8vmin,54px);color:var(--gold);
+  letter-spacing:.2em;text-transform:uppercase;text-shadow:0 0 24px rgba(255,203,69,.5)}
 #idle h1{margin:.08em 0 .1em;font-size:clamp(34px,8.5vmin,132px);line-height:1.14}
 #operator{position:fixed;left:20px;bottom:16px;font-size:13px;color:rgba(242,255,252,.38);line-height:1.7;text-align:left;max-width:calc(100% - 160px)}
 #operator b{color:rgba(242,255,252,.6);font-weight:600}
@@ -64,11 +64,11 @@ canvas#fx{position:fixed;inset:0;width:100%;height:100%;display:block}
 @keyframes tick{0%{transform:scale(1.8);opacity:0;filter:blur(14px)}22%{opacity:1;filter:blur(0)}80%{transform:scale(1);opacity:1}100%{transform:scale(.82);opacity:0}}
 
 /* ---- Khởi động ---- */
-#auth .head{position:absolute;top:5vh;left:0;right:0;text-align:center;padding:0 3vw}
+#auth .head{display:none;position:absolute;top:5vh;left:0;right:0;text-align:center;padding:0 3vw}
 #auth .title{margin:0;font-size:clamp(24px,4.6vmin,76px)}
 #auth .sub{margin:.55em 0 0;font-size:clamp(14px,2.2vmin,32px);color:var(--muted)}
 #auth .sub b{color:var(--gold);font-weight:800}
-#progress{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font-family:var(--display);
+#progress{display:none;position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font-family:var(--display);
   font-size:48px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;color:#fff;
   text-shadow:0 0 18px rgba(95,246,220,.95),0 0 50px rgba(95,246,220,.5)}
 #progress small{display:block;margin-top:.2em;font-family:"Be Vietnam Pro",sans-serif;font-size:.26em;font-weight:600;color:var(--muted);text-shadow:none}
@@ -107,7 +107,7 @@ body.calib #idle,body.calib #countdown{opacity:0;visibility:hidden}
 #flash{position:fixed;inset:0;background:radial-gradient(circle,#fff 0%,#dffff8 45%,var(--cyan) 100%);opacity:0;pointer-events:none}
 
 /* ---- Landing ---- */
-#landing{position:fixed;inset:0;visibility:hidden;background:#0d2b2a;transform-origin:50% 50%}
+#landing{position:fixed;inset:0;visibility:hidden;background:#0d2b2a;transform-origin:50% 50%;will-change:transform,opacity}
 #landing img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
 #site{position:absolute;inset:0;z-index:2;width:100%;height:100%;border:0;background:#fff;opacity:0;pointer-events:none;transition:opacity .9s ease}
 #site.on{opacity:1}
@@ -129,7 +129,7 @@ body.site-live{cursor:auto}
 <canvas id="fx" aria-hidden="true"></canvas>
 
 <section class="scene on" id="idle">
-  <div class="org">UBND Phường Tây Tựu</div>
+  <div class="org">Uỷ ban nhân dân Phường Tây Tựu</div>
   <h2>Ra mắt</h2>
   <h1 class="glow">Bản đồ số Di tích<br>Phường Tây Tựu</h1>
   <div class="beam-line"></div>
@@ -166,6 +166,7 @@ body.site-live{cursor:auto}
 const CONFIG = {
   bgm: 'nhac-nen.mp3',                  // nhạc nền xuyên suốt (lặp lại); thiếu file sẽ dùng nhạc nền tổng hợp
   music: 'nhac-chao-mung.mp3',          // nhạc chào mừng khi cổng mở; thiếu file sẽ dùng kèn tổng hợp
+  introAudio: 'gioi-thieu.mp3',         // file mp3 giới thiệu phát khi hiện trang landing; thiếu file sẽ bỏ qua
   musicVolume: 1.0,                     // âm lượng nhạc (0–1), chỉnh nhanh bằng phím + / -
   sfxVolume: 1.0,                       // âm lượng hiệu ứng (0–1.5)
   landingImage: 'landing.jpg',          // ảnh chụp landing, khổ 16:9, tối thiểu 1920px
@@ -203,7 +204,7 @@ const setProgress = () => $('progress').innerHTML = `${doneSet.size}/${N}<small>
 setProgress();
 
 /* ================== TÀI NGUYÊN ================== */
-const res = { bgm:false, music:false, img:false, site:false };
+const res = { bgm:false, music:false, intro:false, img:false, site:false };
 function mkAudio(src, key, loop){
   const a = new Audio(); a.preload = 'auto'; a.loop = loop;
   a.addEventListener('canplaythrough', () => { res[key] = true; renderOperator(); });
@@ -212,6 +213,7 @@ function mkAudio(src, key, loop){
 }
 const bgmEl = mkAudio(CONFIG.bgm, 'bgm', true);
 const musicEl = mkAudio(CONFIG.music, 'music', false);
+const introEl = CONFIG.introAudio ? mkAudio(CONFIG.introAudio, 'intro', false) : null;
 
 const img = $('landingImg');
 img.onload = () => { res.img = true; renderOperator(); };
@@ -463,8 +465,8 @@ function applyMusic(sec = 1.2){
   }
 }
 function setPhase(p, sec){ MUS.phase = p; applyMusic(sec); }
-function toggleMusic(){ initAudio(); MUS.on = !MUS.on; if (MUS.phase === 'none') MUS.phase = 'bgm'; applyMusic(); toast('Nhạc nền: ' + (MUS.on ? 'bật' : 'tắt')); }
-function changeVol(d){ MUS.vol = Math.min(1, Math.max(0, +(MUS.vol + d).toFixed(2))); applyMusic(.3); toast('Âm lượng nhạc: ' + Math.round(MUS.vol * 100) + '%'); }
+function toggleMusic(){ initAudio(); MUS.on = !MUS.on; if (MUS.phase === 'none' && (!introEl || introEl.paused)) MUS.phase = 'bgm'; applyMusic(); if (introEl && !introEl.paused) introEl.volume = MUS.on ? MUS.vol : 0; toast('Nhạc nền: ' + (MUS.on ? 'bật' : 'tắt')); }
+function changeVol(d){ MUS.vol = Math.min(1, Math.max(0, +(MUS.vol + d).toFixed(2))); applyMusic(.3); if (introEl && !introEl.paused) introEl.volume = MUS.on ? MUS.vol : 0; toast('Âm lượng nhạc: ' + Math.round(MUS.vol * 100) + '%'); }
 musicEl.addEventListener('ended', () => {
   if (MUS.phase === 'welcome') setPhase(stage === 'done' && CONFIG.openMode === 'iframe' ? 'none' : 'bgm', 2);
 });
@@ -472,7 +474,10 @@ window.addEventListener('blur', () => {
   if (stage === 'done' && document.activeElement === site && MUS.phase !== 'none') setPhase('none', .8);
 });
 window.addEventListener('message', e => {
-  if (e.data && e.data.type === 'landing-audio-start' && MUS.phase !== 'none') setPhase('none', .5);
+  if (e.data && e.data.type === 'landing-audio-start'){
+    if (MUS.phase !== 'none') setPhase('none', .5);
+    if (introEl && !introEl.paused) fadeEl(introEl, 0, 500);
+  }
 });
 
 /* ================== HIỆU ỨNG NỀN (canvas) ================== */
@@ -716,7 +721,12 @@ function layout(){
   renderOperator(); updatePadCenters(); buildTraces();
 }
 
+let rafId = null;
+function startDraw(){ if (!rafId) rafId = requestAnimationFrame(draw); }
+function stopDraw(){ if (rafId){ cancelAnimationFrame(rafId); rafId = null; } }
+
 function draw(){
+  rafId = null;
   const e = .045;
   fx.speed += (fx.tSpeed - fx.speed) * e; fx.ring += (fx.tRing - fx.ring) * e; fx.spinV += (fx.tSpinV - fx.spinV) * e;
   fx.py += (fx.tPy - fx.py) * .06; fx.scale += (fx.tScale - fx.scale) * .05; fx.circ += (fx.tCirc - fx.circ) * .04;
@@ -1065,7 +1075,7 @@ function draw(){
     cx.restore();
   }
   if (calib) drawCalib();
-  requestAnimationFrame(draw);
+  rafId = requestAnimationFrame(draw);
 }
 
 const ripples = [], sparks = [], impacts = [], beamAnim = new Map();
@@ -1137,7 +1147,7 @@ CONFIG.delegates.forEach((name, i) => {
   const b = document.createElement('button');
   b.className = 'pad'; b.type = 'button';
   b.setAttribute('aria-label', 'Khởi động ' + (name || (i + 1)));
-  b.innerHTML = `<span class="disc">${FP}<span class="scan"></span></span>${name ? `<span class="name">${name}</span>` : ''}<span class="state"></span>`;
+  b.innerHTML = `<span class="disc">${FP}<span class="scan"></span></span>`;
   b.addEventListener('pointerdown', e => { e.preventDefault(); activate(i); });
   padsEl.appendChild(b);
 });
@@ -1153,12 +1163,11 @@ function activate(i){
     ripples.push({ x: pc.x, y: pc.y, r: padR * .65, maxR: padR * 1.9, a: .85, color: '95,246,220', lw: 3 });
     spawnBurst(pc.x, pc.y, '95,246,220', 14, 3.6);
   }
-  pad.classList.add('scanning'); pad.querySelector('.state').textContent = 'Đang Khởi động…';
+  pad.classList.add('scanning');
   sfx.scan();
   later(() => {
     if (stage !== 'auth') return;
     pad.classList.remove('scanning'); pad.classList.add('done');
-    pad.querySelector('.state').textContent = 'Đã Khởi động';
     doneSet.add(i); sfx.ok(doneSet.size - 1); updatePadCenters();
     const pc2 = padCenters[i];
     if (pc2){
@@ -1218,13 +1227,13 @@ function openGate(){
   later(() => {
     seam.style.opacity = 0;
     sfx.reveal();
-    if (CONFIG.openMode === 'iframe' && !res.img) site.classList.add('on');   // không có ảnh: zoom thẳng vào trang thật
+    if (CONFIG.openMode === 'iframe' && !res.img) site.classList.add('on');
     landing.style.visibility = 'visible';
     landing.animate([
-      {transform:'scale(.16)', clipPath:'circle(20% at 50% 50%)', filter:'brightness(2.4) blur(8px)'},
-      {transform:'scale(1)',   clipPath:'circle(80% at 50% 50%)', filter:'brightness(1) blur(0px)'}
-    ], {duration:2800, easing:'cubic-bezier(.16,.84,.24,1)', fill:'forwards'});
-    flash.animate([{opacity:1},{opacity:0}], {duration:1600, easing:'ease-out', fill:'forwards'});
+      {transform:'scale(.16)', opacity:0},
+      {transform:'scale(1)',   opacity:1}
+    ], {duration:2400, easing:'cubic-bezier(.16,.84,.24,1)', fill:'forwards'});
+    flash.animate([{opacity:1},{opacity:0}], {duration:1400, easing:'ease-out', fill:'forwards'});
   }, 2250);
   later(() => {
     setPhase('welcome', 2);
@@ -1245,6 +1254,13 @@ function openGate(){
 function showSite(){
   site.classList.add('on'); site.classList.add('live');
   document.body.classList.remove('live'); document.body.classList.add('site-live');
+  if (res.intro && introEl){
+    setPhase('none', .6);
+    try { introEl.currentTime = 0; } catch(e){}
+    introEl.volume = MUS.on ? MUS.vol : 0;
+    introEl.play().catch(() => {});
+  }
+  later(() => { stopDraw(); cv.style.display = 'none'; }, 1000);
   setTimeout(() => { try { site.focus(); } catch(e){} }, 900);
 }
 
@@ -1254,7 +1270,8 @@ function reset(){
   ripples.length = 0; sparks.length = 0; impacts.length = 0; beamAnim.clear();
   setPhase('none');
   try { musicEl.currentTime = 0; } catch(e){}
-  [...padsEl.children].forEach(p => { p.classList.remove('scanning','done'); p.querySelector('.state').textContent = ''; });
+  if (introEl){ introEl.pause(); try { introEl.currentTime = 0; } catch(e){} }
+  [...padsEl.children].forEach(p => { p.classList.remove('scanning','done'); });
   setProgress();
   ['seam','flash','landing'].forEach(id => $(id).getAnimations().forEach(a => a.cancel()));
   $('seam').style.opacity = ''; $('landing').style.visibility = 'hidden'; $('landing').style.clipPath = '';
@@ -1264,6 +1281,7 @@ function reset(){
   Object.assign(fx, { tSpeed:.0012, tRing:.35, tSpinV:.004, tPy:.5, tScale:1, tCirc:.6 });
   $('operator').style.display = ''; $('startBtn').style.display = '';
   document.body.classList.remove('live');
+  cv.style.display = ''; startDraw();
   show('idle');
 }
 
@@ -1288,7 +1306,7 @@ addEventListener('keydown', e => {
 });
 addEventListener('contextmenu', e => e.preventDefault());
 
-resize(); requestAnimationFrame(draw);
+resize(); startDraw();
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
 </script>
 </body>

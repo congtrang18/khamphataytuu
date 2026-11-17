@@ -138,22 +138,35 @@ $(document).ready(function () {
     }
 
     function startCounterAnimation() {
+        let remaining = 0;
         $(".counter__number").each(function () {
             const $this = $(this);
-            const textValue = $this.text().trim(); // Lấy nội dung gốc
-            const prefix = textValue.replace(/\d+/g, ""); // Lấy ký tự đặc biệt (+, >)
-            const number = parseInt(textValue.replace(/\D/g, ""), 10); // Lấy số từ nội dung
-
-            if (!$this.data("animated") && isElementInViewport(this)) {
+            if ($this.data("animated")) return;
+            if (isElementInViewport(this)) {
+                const textValue = $this.text().trim(); // Lấy nội dung gốc
+                const prefix = textValue.replace(/\d+/g, ""); // Lấy ký tự đặc biệt (+, >)
+                const number = parseInt(textValue.replace(/\D/g, ""), 10); // Lấy số từ nội dung
                 $this.data("animated", true); // Tránh chạy lại nhiều lần
                 animateCounter($this, number, prefix);
+            } else {
+                remaining++;
             }
         });
+        if (remaining === 0) {
+            $(window).off("scroll.counterAnim load.counterAnim");
+        }
     }
 
     // Kiểm tra khi trang tải và khi cuộn
-    $(window).on("scroll load", function () {
-        startCounterAnimation();
+    let counterTicking = false;
+    $(window).on("scroll.counterAnim load.counterAnim", function () {
+        if (!counterTicking) {
+            counterTicking = true;
+            requestAnimationFrame(function () {
+                startCounterAnimation();
+                counterTicking = false;
+            });
+        }
     });
 });
 
