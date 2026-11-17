@@ -43,7 +43,8 @@ window.markersData = {
             "activityStatus": "",
             "note": "310/QĐ-BT ngày 13/2/1996",
             "url_vrtour": "",
-            "imageUrl": "uploads/images/diem-den/chua-bo-de.png"
+            "imageUrl": "uploads/images/diem-den/chua-bo-de.png",
+            "audio": "audio/chua-bo-de.mp3"
         }
     },
     "route_2": {
@@ -66,7 +67,8 @@ window.markersData = {
             "otherIssues": "",
             "activityStatus": "",
             "note": "774/QĐ-BT ngày 21/6/1993",
-            "imageUrl": "uploads/images/diem-den/chua-phuc-ly.jpg"
+            "imageUrl": "uploads/images/diem-den/chua-phuc-ly.jpg",
+            "audio": "audio/chua-phuc-ly.mp3"
         }
     },
     "route_3": {
@@ -89,7 +91,8 @@ window.markersData = {
             "otherIssues": "Tấm bia đặt bên đình làng ghi chùa được xây năm Cảnh Hưng thứ nhất (1740). Chùa đã qua nhiều lần trùng tu, gần nhất vào năm 1989.",
             "activityStatus": "Kiến trúc chùa mang dáng dấp chung của chùa làng Bắc Bộ. Giá trị nổi bật là hơn 40 pho tượng: tượng đất, tượng gỗ quý, tượng đồng và phù điêu. Chùa còn quả chuông đúc thời Tây Sơn; niên hiệu trên chuông đã bị đục xóa.",
             "note": "490/QĐ ngày 22/4/1992",
-            "imageUrl": "uploads/images/diem-den/chua-van-tri.jpg"
+            "imageUrl": "uploads/images/diem-den/chua-van-tri.jpg",
+            "audio": "audio/chua-van-tri.mp3"
         }
     },
     "route_4": {
@@ -112,7 +115,8 @@ window.markersData = {
             "otherIssues": "Đình được xây lại vào thời Hậu Lê (năm 1713). Người có công là ông Nguyễn Công Ánh, nay được thờ trên bệ gạch sát tường hồi. Nhà Phương đình dựng năm Khải Định thứ ba (1918).",
             "activityStatus": "Gian bên trái đặt bộ kiệu bát cống. Nhà Phương đình năm 1918 được tư liệu đánh giá là rất đẹp. Theo tư liệu, làng Ngọa Long kết nghĩa với làng Đình Quán. Vào dịp hội, hai làng cùng rước từ Đình Quán sang Ngọa Long ngày mồng 10 tháng Hai, hôm sau rước về Đình Quán tế lễ.",
             "note": "310/QĐ-BT ngày 13/2/1996",
-            "imageUrl": "uploads/images/diem-den/dinh-ngoa-long.png"
+            "imageUrl": "uploads/images/diem-den/dinh-ngoa-long.png",
+            "audio": "audio/dinh-ngoa-long.mp3"
         }
     },
     "route_5": {
@@ -135,7 +139,8 @@ window.markersData = {
             "otherIssues": "",
             "activityStatus": "",
             "note": "774/QĐ-BT ngày 21/6/1993",
-            "imageUrl": "uploads/images/diem-den/dinh-phuc-ly.png"
+            "imageUrl": "uploads/images/diem-den/dinh-phuc-ly.png",
+            "audio": "audio/dinh-phuc-ly.mp3"
         }
     },
     "route_6": {
@@ -158,7 +163,8 @@ window.markersData = {
             "otherIssues": "Đình còn bài vị ghi “Dương Cảnh thành hoàng – Đồng Cổ Sơn Chu Minh thượng đẳng thần”, cùng thần tích và 11 đạo sắc phong từ thời Lê đến thời Nguyễn. Bia đình dựng năm Chính Hòa thứ 15 (1704).",
             "activityStatus": "Đình có quy mô lớn, bề thế, cùng cây đa và giếng nước. Hiện vật và điêu khắc trong đình có niên đại thế kỷ XVII–XIX. Các mảng chạm khắc gồm đề tài tứ quý, tứ linh, hoa lá; ngoài ra còn câu đối, đại tự và kiệu bát cống.",
             "note": "490/QĐ ngày 22/4/1992",
-            "imageUrl": "uploads/images/diem-den/dinh-van-tri.png"
+            "imageUrl": "uploads/images/diem-den/dinh-van-tri.png",
+            "audio": "audio/dinh-van-tri.mp3"
         }
     },
     "route_7": {
@@ -181,7 +187,8 @@ window.markersData = {
             "otherIssues": "Tương truyền miếu có từ đầu Công nguyên. Theo sử sách, thần phả và truyền thuyết, thần Đồng Cổ báo mộng giúp các vua Lý đánh giặc Chiêm Thành và dẹp loạn Tam Vương. Vua cho dựng miếu thờ và lập lễ Minh thệ. Theo tư liệu lưu tại miếu, thần được ban 62 đạo sắc phong qua các triều Lý, Trần, Lê, Tây Sơn, Nguyễn.",
             "activityStatus": "Trước miếu có hồ bán nguyệt, qua sân rộng là nhà Tiền tế 5 gian lợp ngói mũi hài, nhiều mảng hoa văn mang phong cách thời Lê. Cuối năm 2007, đoàn khảo cổ tìm thấy tầng văn hóa và mộ táng giai đoạn Đông Sơn, cùng phế tích lò nung vật liệu thời Lê (thế kỷ XVII–XVIII).",
             "note": "100/VH-QĐ 26/11/1989",
-            "imageUrl": "uploads/images/diem-den/mieu-dong-co.jpg"
+            "imageUrl": "uploads/images/diem-den/mieu-dong-co.jpg",
+            "audio": "audio/mieu-dong-co.mp3"
         }
     },
     "route_8": {
@@ -204,7 +211,8 @@ window.markersData = {
             "otherIssues": "",
             "activityStatus": "Ngoài việc thờ Phật, chùa là nơi tưởng niệm các anh hùng văn hóa, anh hùng dân tộc có công trong lịch sử và là nơi sinh hoạt văn hóa của làng xã.",
             "note": "06/2000/QĐ-BVHTT ngày 13/4/2000",
-            "imageUrl": "uploads/images/diem-den/chua-hung-khanh.png"
+            "imageUrl": "uploads/images/diem-den/chua-hung-khanh.png",
+            "audio": "audio/chua-hung-khanh.mp3"
         }
     },
     "route_9": {
@@ -228,7 +236,8 @@ window.markersData = {
             "activityStatus": "Trước đình là ao chạ hình vuông, tiếp đến hai lầu Chính ngự, bốn nhà Phương đình hai tầng tám mái và hai dãy tả hữu mạc. Khu chính hình chữ Đinh, gồm Đại đình 5 gian 2 dĩ và Hậu cung 4 gian. Lễ hội bơi Đăm diễn ra từ mồng 9 đến 11 tháng Ba âm lịch, mở hội lớn 5 năm một lần, để tưởng nhớ Thành hoàng Bạch Hạc Tam Giang.",
             "note": "57-VH/QĐ ngày 18/01/1993",
             "url_vrtour": "https://khamphataytuu.vn/dinhtaytuu/",
-            "imageUrl": "uploads/images/diem-den/dinh-tay-tuu.png"
+            "imageUrl": "uploads/images/diem-den/dinh-tay-tuu.png",
+            "audio": "audio/dinh-tay-tuu.mp3"
         }
     },
     "route_10": {
@@ -251,7 +260,8 @@ window.markersData = {
             "otherIssues": "",
             "activityStatus": "Đình còn giữ khám thờ và cỗ ngai bài vị sơn son thếp vàng, hương án, chiêng đồng, hoành phi, câu đối. Ngoài ra còn có cây đèn, cây nến, lọ hoa và tàn lọng.",
             "note": "310/QĐ-BT ngày 13/02/1996",
-            "imageUrl": "uploads/images/diem-den/dinh-trung-tuu.jpg"
+            "imageUrl": "uploads/images/diem-den/dinh-trung-tuu.jpg",
+            "audio": "audio/dinh-trung-tuu.mp3"
         }
     },
     "route_11": {
@@ -275,7 +285,8 @@ window.markersData = {
             "activityStatus": "Miếu dựng sát bờ sông, cách đình khoảng 1.000 m. Vị trí này thuận cho các đám rước Thành hoàng từ miếu về đình và cho cuộc thi bơi thuyền trong ngày hội.",
             "note": "57-VH/QĐ ngày 18/01/1993",
             "url_vrtour": "https://khamphataytuu.vn/mieutaytuu",
-            "imageUrl": "uploads/images/diem-den/mieu-tay-tuu.png"
+            "imageUrl": "uploads/images/diem-den/mieu-tay-tuu.png",
+            "audio": "audio/mieu-tay-tuu.mp3"
         }
     },
     "route_12": {
@@ -298,7 +309,8 @@ window.markersData = {
             "otherIssues": "Nguyễn Hữu Liêu (1532–1597) quê làng Tây Đam, nay là Tây Tựu. Ông là viên tướng có công phò nhà Lê Trung Hưng đánh bại nhà Mạc, lấy lại thành Thăng Long năm 1591. Tổ bảy đời của ông là người Trung Quốc thời Minh, sang buôn bán rồi lấy vợ ở làng Ông Mặc (nay là Hương Mạc, Từ Sơn, Bắc Ninh). Đến đời tổ sáu đời, gia đình di cư sang làng Tây Đam.",
             "activityStatus": "",
             "note": "1964/QĐ-BT ngày 27/8/1996",
-            "imageUrl": "uploads/images/diem-den/nguyen-huu-lieu.png"
+            "imageUrl": "uploads/images/diem-den/nguyen-huu-lieu.png",
+            "audio": "audio/nha-tho-nguyen-huu-lieu.mp3"
         }
     },
     "route_13": {
@@ -321,7 +333,8 @@ window.markersData = {
             "otherIssues": "",
             "activityStatus": "",
             "note": "5524/QĐ-UBND ngày 21/12/2015",
-            "imageUrl": "uploads/images/diem-den/dinh-nguyen-xa.png"
+            "imageUrl": "uploads/images/diem-den/dinh-nguyen-xa.png",
+            "audio": "audio/dinh-nguyen-xa.mp3"
         }
     },
     "route_14": {
@@ -344,7 +357,8 @@ window.markersData = {
             "otherIssues": "",
             "activityStatus": "",
             "note": "6098/QĐ-UBND ngày 11/11/2015",
-            "imageUrl": "uploads/images/diem-den/nha-tho-ho-nguyen-dang.png"
+            "imageUrl": "uploads/images/diem-den/nha-tho-ho-nguyen-dang.png",
+            "audio": "audio/nha-tho-nguyen-dang.mp3"
         }
     },
     "route_15": {
@@ -367,7 +381,8 @@ window.markersData = {
             "otherIssues": "Được xây dựng vào khoảng đầu thế kỷ 17, trùng tu năm 2001. Không có tài liệu ghi chép niên đại, theo truyền tụng Đền Bà được xây dựng cùng thời kỳ Chùa Văn Trì. Năm 1960 bị tháo dỡ; Nhân dân làng phục dựng lại năm 2009",
             "activityStatus": "Trong Miếu còn lưu giữ được di vật giá trị như: 02 cụ voi, 02 bộ lục bộ. Là nơi tâm linh để Nhân dân kêu cầu giải tai trừ ách cầu mong mưa thuận gió hoà, quốc thái dân an.",
             "note": "Nằm cùng thửa đất và sát quần thể Đình, Chùa Văn Trì (Đang hoàn thiện hồ sơ đề nghị xếp hạng di tích Thành phố)",
-            "imageUrl": "uploads/images/diem-den/mieu-van-tri.jpeg"
+            "imageUrl": "uploads/images/diem-den/mieu-van-tri.jpeg",
+            "audio": "audio/mieu-van-tri.mp3"
         }
     },
     "route_16": {
@@ -390,7 +405,8 @@ window.markersData = {
             "otherIssues": "Chưa rõ niên đại khởi dựng (theo các cụ cao niên thì Năm Khải định thứ 6 (1921) trùng tu lần 1; năm 1997 trùng tu lần 2).",
             "activityStatus": "Trong Đền còn lưu giữ được di vật giá trị như: 1 bộ gian ngai thờ, 3 bát hương đá, 3 án thư, 3 bộ hoành phi câu đối, 03 văn bia, 4 pho tượng hài đồng đá, 2 lọng, trống, chiêng, voi, ngựa",
             "note": "Đang hoàn thiện hồ sơ đề nghị xếp hạng di tích Thành phố",
-            "imageUrl": "uploads/images/diem-den/den-khanh-linh.png"
+            "imageUrl": "uploads/images/diem-den/den-khanh-linh.png",
+            "audio": "audio/den-khanh-linh.mp3"
         }
     }
 };

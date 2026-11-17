@@ -10,6 +10,10 @@
     const DEFAULT_ZOOM = 14;
 
     let map = null;
+    let bgm = null;          // nhạc nền
+    let relicAudio = null;   // audio giới thiệu của di tích đang mở
+    const BGM_VOLUME = 1;
+    const BGM_DUCK_VOLUME = 0.4;
     let markerRefs = [];
     let markersLayer = null;
     let routeLine = null;
@@ -313,6 +317,32 @@
         return modal;
     }
 
+    function setBgmVolume(v) {
+      if (bgm) bgm.volume = v;
+    }
+
+    function stopRelicAudio() {
+      if (relicAudio) {
+        relicAudio.pause();
+        relicAudio = null;
+      }
+    }
+
+    function playRelicAudio(src) {
+        stopRelicAudio();
+        if (!src) return;
+        relicAudio = new Audio(src);
+        relicAudio.addEventListener('ended', () => {
+            setBgmVolume(BGM_VOLUME);
+            const btn = document.getElementById('relic-audio-btn');
+            if (btn) {
+                btn.querySelector('i').className = 'fas fa-volume-mute';
+                btn.title = 'Phát lại âm thanh giới thiệu';
+            }
+        });
+        relicAudio.play().catch(err => console.warn('[Audio di tích] Không phát được:', err));
+    }
+
     function openRelicDetailModal(locIndex) {
         const loc = currentRenderedLocations[locIndex];
         if (!loc) return;
@@ -410,11 +440,7 @@
         const cultureHtml = cultureParts.join('');
 
         const tabs = [
-            {
-                id: 'tab-overview',
-                label: 'Tổng quan',
-                html: overviewParagraphs.map(p => `<p class="boss-popup__desc">${p}</p>`).join('')
-            },
+            {id: 'tab-overview',label: 'Tổng quan',html: overviewParagraphs.map(p => `<p class="boss-popup__desc">${p}</p>`).join('')},
             { id: 'tab-land', label: 'Đất đai & Kiến trúc', html: landHtml },
             { id: 'tab-history', label: 'Lịch sử', html: historyHtml },
             { id: 'tab-culture', label: 'Văn hóa & Hiện vật', html: cultureHtml }
@@ -444,6 +470,11 @@
                     <div class="boss-popup__hero-overlay"></div>
                     <span class="boss-popup__tag">${rankLabel}</span>
                     <button type="button" class="boss-popup__close" onclick="window.closeRelicDetailModal()" title="Đóng">&times;</button>
+                    ${info.audio ? `
+                        <button type="button" id="relic-audio-btn" class="boss-popup__audio" title="Tắt âm thanh giới thiệu">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                    ` : ''}
                     <div class="boss-popup__hero-text">
                         <h2 class="boss-popup__title">${title}</h2>
                         <div class="boss-popup__address">
@@ -505,6 +536,27 @@
         modal.classList.add('is-open');
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        setBgmVolume(BGM_DUCK_VOLUME);
+        playRelicAudio(info.audio ? info.audio.trim() : '');
+
+        const relicAudioBtn = document.getElementById('relic-audio-btn');
+        if (relicAudioBtn) {
+            relicAudioBtn.addEventListener('click', function () {
+                if (!relicAudio) return;
+                const icon = this.querySelector('i');
+                if (relicAudio.paused) {
+                    relicAudio.play().catch(() => {});
+                    setBgmVolume(BGM_DUCK_VOLUME);
+                    icon.className = 'fas fa-volume-up';
+                    this.title = 'Tắt âm thanh giới thiệu';
+                } else {
+                    relicAudio.pause();
+                    setBgmVolume(BGM_VOLUME);
+                    icon.className = 'fas fa-volume-mute';
+                    this.title = 'Bật âm thanh giới thiệu';
+                }
+            });
+        }
     }
 
     function closeRelicDetailModal() {
@@ -513,6 +565,8 @@
         modal.classList.remove('is-open');
         modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = document.querySelector('.is-pseudo-fullscreen') ? 'hidden' : '';
+        stopRelicAudio();
+        setBgmVolume(BGM_VOLUME);
     }
 
     /**
@@ -855,6 +909,49 @@
 
         initMap();
 
+        // Nhạc nền
+        const audioBtn = document.getElementById('btn-audio');
+        const mapFrameEl = document.getElementById('map-frame');
+
+        bgm = new Audio('audio/bg.mp3');
+        bgm.loop = true;
+        bgm.volume = BGM_VOLUME;
+        bgm.preload = 'none';
+
+        const updateAudioUI = () => {
+            if (!audioBtn) return;
+            const playing = !bgm.paused;
+            audioBtn.classList.toggle('is-playing', playing);
+            audioBtn.title = playing ? 'Tắt nhạc nền' : 'Bật nhạc nền';
+            audioBtn.querySelector('i').className = playing ? 'fas fa-volume-up' : 'fas fa-volume-mute';
+        };
+
+        // Tự bật nhạc ở lần tương tác đầu tiên với bản đồ
+        let autoPlayTried = false;
+        function autoStartBgm(e) {
+            if (autoPlayTried) return;
+            // Bấm vào nút audio thì để nút tự xử lý, không bật ở đây
+            if (e.target.closest && e.target.closest('#btn-audio')) return;
+            autoPlayTried = true;
+            bgm.play().then(updateAudioUI).catch(() => { autoPlayTried = false; });
+            ['pointerdown', 'keydown'].forEach(t => mapFrameEl.removeEventListener(t, autoStartBgm, true));
+        }
+        if (mapFrameEl) {
+            ['pointerdown', 'keydown'].forEach(t => mapFrameEl.addEventListener(t, autoStartBgm, true));
+        }
+
+        if (audioBtn) {
+            audioBtn.addEventListener('click', function () {
+                autoPlayTried = true; // người dùng đã chủ động chọn, không tự bật nữa
+                if (bgm.paused) {
+                    bgm.play().then(updateAudioUI).catch(updateAudioUI);
+                } else {
+                    bgm.pause();
+                    updateAudioUI();
+                }
+            });
+        }
+
         // Gắn sự kiện nút định vị GPS của người dùng
         const locateBtn = document.getElementById('btn-user-locate');
         if (locateBtn) {
@@ -864,20 +961,20 @@
         }
 
         // Danh sách di tích
-const listBody = document.getElementById('relic-list-body');
-if (listBody) {
-    listBody.addEventListener('click', function (e) {
-        const item = e.target.closest('.relic-list__item');
-        if (item) focusRelic(Number(item.dataset.idx));
-    });
-}
-const listCloseBtn = document.getElementById('relic-list-close');
-const listToggleBtn = document.getElementById('btn-list-toggle');
-if (listCloseBtn) listCloseBtn.addEventListener('click', () => setListOpen(false));
-if (listToggleBtn) listToggleBtn.addEventListener('click', () => setListOpen(true));
+        const listBody = document.getElementById('relic-list-body');
+        if (listBody) {
+            listBody.addEventListener('click', function (e) {
+                const item = e.target.closest('.relic-list__item');
+                if (item) focusRelic(Number(item.dataset.idx));
+            });
+        }
+        const listCloseBtn = document.getElementById('relic-list-close');
+        const listToggleBtn = document.getElementById('btn-list-toggle');
+        if (listCloseBtn) listCloseBtn.addEventListener('click', () => setListOpen(false));
+        if (listToggleBtn) listToggleBtn.addEventListener('click', () => setListOpen(true));
 
-// Máy tính mở sẵn, điện thoại đóng sẵn
-setListOpen(!isMobileView());
+        // Máy tính mở sẵn, điện thoại đóng sẵn
+        setListOpen(!isMobileView());
 
         // Nút bật/tắt chế độ toàn màn hình
         let fsPlaceholder = null;
@@ -916,9 +1013,8 @@ setListOpen(!isMobileView());
         });
         }
 
-
         // Gắn sự kiện nút đóng khung chỉ đường
-       // Nút × trên card: chỉ thu card lại (tuyến đường vẫn giữ trên bản đồ)
+        // Nút × trên card: chỉ thu card lại (tuyến đường vẫn giữ trên bản đồ)
         const routeCard = document.getElementById('route-card');
         const closeCardBtn = document.getElementById('route-card-close');
         const routeToggleBtn = document.getElementById('btn-route-toggle');

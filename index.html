@@ -421,9 +421,7 @@
             </section>
             <section class="section pb-0" id="s-route">
                 <div class="container">
-                    <h2 class="section__title text-primary">Tuyến du lịch</h2>
-                    <div class="section__subtitle">Những tuyến du lịch nổi bật</div>
-                    <div class="section__desc">Mời bạn chọn tuyến du lịch yêu thích tại đây, khám phá ngay nào!</div>
+                    <h2 class="section__title text-primary">Bản đồ số khám phá Tây Tựu</h2>
                     <div class="mt-3 mb-40 mx-auto position-relative" style="max-width: 790px; z-index: 100">
                         <div class="route">
                             <div class="route__select js-destination-select">
@@ -442,6 +440,7 @@
                 <div>
                     <div class="map-frame" id="map-frame">
                         <div id="map"></div>
+                        <div class="map-title">Bản đồ số khám phá Tây Tựu</div>
                         <!-- Danh sách di tích -->
                         <div id="relic-list" class="relic-list">
                             <div class="relic-list__header">
@@ -452,6 +451,11 @@
                         </div>
                         <button type="button" id="btn-list-toggle" class="map-list-toggle" title="Danh sách di tích">
                             <i class="fas fa-list"></i>
+                        </button>
+
+                        <!-- Nút bật/tắt nhạc nền -->
+                        <button type="button" id="btn-audio" class="map-audio-btn" title="Bật nhạc nền">
+                            <i class="fas fa-volume-mute"></i>
                         </button>
                         <!-- Nút bật/tắt khung chỉ đường -->
                         <button type="button" id="btn-route-toggle" class="map-locate-btn map-route-toggle" title="Thông tin chỉ đường">
