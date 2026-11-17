@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<title>Lễ khai trương – Tây Tựu 360</title>
+<title>Ra mắt – Bản đồ số Di tích Phường Tây Tựu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Be+Vietnam+Pro:wght@400;600;800&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@ canvas#fx{position:fixed;inset:0;width:100%;height:100%;display:block}
 
 /* ---- Màn chờ ---- */
 #idle{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 5vw}
-#idle .org{font-family:var(--display);font-weight:600;font-size:clamp(14px,2.2vmin,30px);color:var(--cyan);letter-spacing:.12em;text-transform:uppercase}
+#idle .org{font-family:var(--display);font-weight:700;font-size:clamp(22px,3.8vmin,54px);color:var(--cyan);letter-spacing:.1em;text-transform:uppercase}
 #idle h1{margin:.25em 0 .1em;font-size:clamp(48px,13vmin,200px)}
 #idle h2{margin:.3em 0 0;font-family:var(--display);font-weight:600;font-size:clamp(20px,4.4vmin,64px);color:var(--gold);
   text-shadow:0 0 24px rgba(255,203,69,.5)}
@@ -128,9 +128,9 @@ body.site-live{cursor:auto}
 <canvas id="fx" aria-hidden="true"></canvas>
 
 <section class="scene on" id="idle">
-  <div class="org">UBND phường Tây Tựu</div>
-  <h1 class="glow">Lễ khai trương</h1>
-  <h2>Nền tảng số Tây Tựu 360</h2>
+  <div class="org">UBND Phường Tây Tựu</div>
+  <h1 class="glow">Ra mắt</h1>
+  <h2>Bản đồ số Di tích Phường Tây Tựu</h2>
   <div class="beam-line"></div>
 </section>
 
@@ -153,7 +153,7 @@ body.site-live{cursor:auto}
   <iframe id="site" title="Khám phá Tây Tựu" allow="fullscreen; autoplay; geolocation" tabindex="-1"></iframe>
   <div id="landingFallback"><b>Tây Tựu 360</b><span>khamphataytuu.vn</span></div>
 </div>
-<div id="banner">Nền tảng số Tây Tựu 360 chính thức ra mắt</div>
+<div id="banner">Bản đồ số Di tích Phường Tây Tựu</div>
 
 <div id="operator"></div>
 <div id="toast"></div>
@@ -174,12 +174,12 @@ const CONFIG = {
                                         //  'redirect' = chuyển hẳn sang khamphataytuu.vn (nhạc sẽ tắt, trình duyệt có thể thoát toàn màn hình)
                                         //  'image'    = chỉ hiện ảnh landing, không mở trang thật
   redirectDelay: 1500,                  // chỉ dùng cho 'redirect': chờ bao lâu (ms) sau khi zoom xong
-  delegates: ['Đại biểu 1','Đại biểu 2','Đại biểu 3','Đại biểu 4','Đại biểu 5','Đại biểu 6'],
+  delegates: ['','','','','',''],
   scanTime: 900,                        // thời gian quét mỗi vân tay (ms)
 
   /* Kích thước thật của màn LED và ô bấm – đo bằng thước tại hội trường */
   screen: { widthCm: 400, heightCm: 300, bottomFromFloorCm: 0 },
-  pad:    { diameterCm: 28, centerHeightCm: 120, spacingCm: 68, labelCm: 3.5 }
+  pad:    { diameterCm: 28, centerHeightCm: 85, spacingCm: 68, labelCm: 3.5 }
 };
 const N = CONFIG.delegates.length;
 
@@ -464,7 +464,15 @@ function applyMusic(sec = 1.2){
 function setPhase(p, sec){ MUS.phase = p; applyMusic(sec); }
 function toggleMusic(){ initAudio(); MUS.on = !MUS.on; if (MUS.phase === 'none') MUS.phase = 'bgm'; applyMusic(); toast('Nhạc nền: ' + (MUS.on ? 'bật' : 'tắt')); }
 function changeVol(d){ MUS.vol = Math.min(1, Math.max(0, +(MUS.vol + d).toFixed(2))); applyMusic(.3); toast('Âm lượng nhạc: ' + Math.round(MUS.vol * 100) + '%'); }
-musicEl.addEventListener('ended', () => { if (MUS.phase === 'welcome') setPhase('bgm', 3); });
+musicEl.addEventListener('ended', () => {
+  if (MUS.phase === 'welcome') setPhase(stage === 'done' && CONFIG.openMode === 'iframe' ? 'none' : 'bgm', 2);
+});
+window.addEventListener('blur', () => {
+  if (stage === 'done' && document.activeElement === site && MUS.phase !== 'none') setPhase('none', .8);
+});
+window.addEventListener('message', e => {
+  if (e.data && e.data.type === 'landing-audio-start' && MUS.phase !== 'none') setPhase('none', .5);
+});
 
 /* ================== HIỆU ỨNG NỀN (canvas) ================== */
 const cv = $('fx'), cx = cv.getContext('2d');
@@ -1127,8 +1135,8 @@ const padsEl = $('pads');
 CONFIG.delegates.forEach((name, i) => {
   const b = document.createElement('button');
   b.className = 'pad'; b.type = 'button';
-  b.setAttribute('aria-label', 'Khởi động ' + name);
-  b.innerHTML = `<span class="disc">${FP}<span class="scan"></span></span><span class="name">${name}</span><span class="state">Chạm để Khởi động</span>`;
+  b.setAttribute('aria-label', 'Khởi động ' + (name || (i + 1)));
+  b.innerHTML = `<span class="disc">${FP}<span class="scan"></span></span>${name ? `<span class="name">${name}</span>` : ''}<span class="state"></span>`;
   b.addEventListener('pointerdown', e => { e.preventDefault(); activate(i); });
   padsEl.appendChild(b);
 });
@@ -1219,7 +1227,7 @@ function openGate(){
   }, 2250);
   later(() => {
     setPhase('welcome', 2);
-    if (!res.music){ const len = fanfare(); later(() => { if (MUS.phase === 'welcome') setPhase('bgm', 3); }, len * 1000 + 600); }
+    if (!res.music){ const len = fanfare(); later(() => { if (MUS.phase === 'welcome') setPhase(stage === 'done' && CONFIG.openMode === 'iframe' ? 'none' : 'bgm', 2); }, len * 1000 + 600); }
   }, 4300);
   later(() => {
     stage = 'done'; landing.style.clipPath = 'none'; landing.style.transform = 'none'; landing.style.filter = 'none';
@@ -1245,7 +1253,7 @@ function reset(){
   ripples.length = 0; sparks.length = 0; impacts.length = 0; beamAnim.clear();
   setPhase('none');
   try { musicEl.currentTime = 0; } catch(e){}
-  [...padsEl.children].forEach(p => { p.classList.remove('scanning','done'); p.querySelector('.state').textContent = 'Chạm để Khởi động'; });
+  [...padsEl.children].forEach(p => { p.classList.remove('scanning','done'); p.querySelector('.state').textContent = ''; });
   setProgress();
   ['seam','flash','landing'].forEach(id => $(id).getAnimations().forEach(a => a.cancel()));
   $('seam').style.opacity = ''; $('landing').style.visibility = 'hidden'; $('landing').style.clipPath = '';

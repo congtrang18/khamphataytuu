@@ -336,9 +336,16 @@
       }
     }
 
+    function notifyParentAudioStart() {
+        if (window.parent && window.parent !== window) {
+            try { window.parent.postMessage({ type: 'landing-audio-start' }, '*'); } catch (e) {}
+        }
+    }
+
     function playRelicAudio(src) {
         stopRelicAudio();
         if (!src) return;
+        notifyParentAudioStart();
         relicAudio = new Audio(src);
         relicAudio.addEventListener('ended', () => {
             setBgmVolume(BGM_VOLUME);
@@ -934,14 +941,43 @@
             audioBtn.querySelector('i').className = playing ? 'fas fa-volume-up' : 'fas fa-volume-mute';
         };
 
+        const pauseAllLandingAudio = () => {
+            if (bgm && !bgm.paused) {
+                bgm.pause();
+                updateAudioUI();
+            }
+            if (relicAudio && !relicAudio.paused) {
+                relicAudio.pause();
+                setBgmVolume(BGM_VOLUME);
+                const btn = document.getElementById('relic-audio-btn');
+                if (btn) {
+                    btn.querySelector('i').className = 'fas fa-volume-mute';
+                    btn.title = 'Bật âm thanh giới thiệu';
+                }
+            }
+        };
+
+        // Tránh đè âm thanh khi mở VR Tour hoặc chuyển tab
+        document.addEventListener('click', function (e) {
+            if (e.target.closest && e.target.closest('.relic-popup__btn-vr, .boss-popup__btn--vr, .js-experience')) {
+                pauseAllLandingAudio();
+            }
+        }, true);
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) pauseAllLandingAudio();
+        });
+
         // Tự bật nhạc ở lần tương tác đầu tiên với bản đồ
         let autoPlayTried = false;
         function autoStartBgm(e) {
             if (autoPlayTried) return;
-            // Bấm vào nút audio thì để nút tự xử lý, không bật ở đây
-            if (e.target.closest && e.target.closest('#btn-audio')) return;
+            // Bấm vào nút audio hoặc nút VR thì để nút tự xử lý, không bật ở đây
+            if (e.target.closest && e.target.closest('#btn-audio, .relic-popup__btn-vr, .boss-popup__btn--vr')) return;
             autoPlayTried = true;
-            bgm.play().then(updateAudioUI).catch(() => { autoPlayTried = false; });
+            bgm.play().then(() => {
+                notifyParentAudioStart();
+                updateAudioUI();
+            }).catch(() => { autoPlayTried = false; });
             ['pointerdown', 'keydown'].forEach(t => mapFrameEl.removeEventListener(t, autoStartBgm, true));
         }
         if (mapFrameEl) {
@@ -952,7 +988,10 @@
             audioBtn.addEventListener('click', function () {
                 autoPlayTried = true; // người dùng đã chủ động chọn, không tự bật nữa
                 if (bgm.paused) {
-                    bgm.play().then(updateAudioUI).catch(updateAudioUI);
+                    bgm.play().then(() => {
+                        notifyParentAudioStart();
+                        updateAudioUI();
+                    }).catch(updateAudioUI);
                 } else {
                     bgm.pause();
                     updateAudioUI();
