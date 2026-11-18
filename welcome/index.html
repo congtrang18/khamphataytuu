@@ -170,7 +170,7 @@ const CONFIG = {
   musicVolume: 1.0,                     // âm lượng nhạc (0–1), chỉnh nhanh bằng phím + / -
   sfxVolume: 1.0,                       // âm lượng hiệu ứng (0–1.5)
   landingImage: 'landing.jpg',          // ảnh chụp landing, khổ 16:9, tối thiểu 1920px
-  landingUrl: 'https://khamphataytuu.vn',
+  landingUrl: (location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.hostname.endsWith('khamphataytuu.vn')) ? '../index.html' : 'https://khamphataytuu.vn',
   openMode: 'iframe',                   // cách mở trang thật sau khi cổng mở:
                                         //  'iframe'   = mở khamphataytuu.vn ngay trong màn hình này (nhạc vẫn chạy, giữ toàn màn hình) – khuyên dùng
                                         //  'redirect' = chuyển hẳn sang khamphataytuu.vn (nhạc sẽ tắt, trình duyệt có thể thoát toàn màn hình)
@@ -207,7 +207,9 @@ setProgress();
 const res = { bgm:false, music:false, intro:false, img:false, site:false };
 function mkAudio(src, key, loop){
   const a = new Audio(); a.preload = 'auto'; a.loop = loop;
-  a.addEventListener('canplaythrough', () => { res[key] = true; renderOperator(); });
+  const ok = () => { res[key] = true; renderOperator(); };
+  a.addEventListener('canplay', ok, { once: true });
+  a.addEventListener('canplaythrough', ok, { once: true });
   a.addEventListener('error', () => { res[key] = false; renderOperator(); });
   a.src = src; return a;
 }
@@ -217,7 +219,7 @@ const introEl = CONFIG.introAudio ? mkAudio(CONFIG.introAudio, 'intro', false) :
 
 const img = $('landingImg');
 img.onload = () => { res.img = true; renderOperator(); };
-img.onerror = () => { res.img = false; $('landingFallback').style.display = 'flex'; img.style.display = 'none'; renderOperator(); };
+img.onerror = () => { res.img = false; img.style.display = 'none'; if (CONFIG.openMode === 'image') $('landingFallback').style.display = 'flex'; renderOperator(); };
 img.src = CONFIG.landingImage;
 
 const site = $('site');
@@ -467,11 +469,18 @@ function applyMusic(sec = 1.2){
 function setPhase(p, sec){ MUS.phase = p; applyMusic(sec); }
 function toggleMusic(){ initAudio(); MUS.on = !MUS.on; if (MUS.phase === 'none' && (!introEl || introEl.paused)) MUS.phase = 'bgm'; applyMusic(); if (introEl && !introEl.paused) introEl.volume = MUS.on ? MUS.vol : 0; toast('Nhạc nền: ' + (MUS.on ? 'bật' : 'tắt')); }
 function changeVol(d){ MUS.vol = Math.min(1, Math.max(0, +(MUS.vol + d).toFixed(2))); applyMusic(.3); if (introEl && !introEl.paused) introEl.volume = MUS.on ? MUS.vol : 0; toast('Âm lượng nhạc: ' + Math.round(MUS.vol * 100) + '%'); }
+function playIntroAudio(){
+  if (!res.intro || !introEl || stage !== 'done') return;
+  setPhase('none', .4);
+  try { introEl.currentTime = 0; } catch(e){}
+  introEl.volume = MUS.on ? MUS.vol : 0;
+  introEl.play().catch(() => {});
+}
 musicEl.addEventListener('ended', () => {
-  if (MUS.phase === 'welcome') setPhase(stage === 'done' && CONFIG.openMode === 'iframe' ? 'none' : 'bgm', 2);
-});
-window.addEventListener('blur', () => {
-  if (stage === 'done' && document.activeElement === site && MUS.phase !== 'none') setPhase('none', .8);
+  if (MUS.phase === 'welcome'){
+    if (stage === 'done' && CONFIG.openMode === 'iframe' && res.intro && introEl) playIntroAudio();
+    else setPhase(stage === 'done' && CONFIG.openMode === 'iframe' ? 'none' : 'bgm', 2);
+  }
 });
 window.addEventListener('message', e => {
   if (e.data && e.data.type === 'landing-audio-start'){
@@ -1237,7 +1246,15 @@ function openGate(){
   }, 2250);
   later(() => {
     setPhase('welcome', 2);
-    if (!res.music){ const len = fanfare(); later(() => { if (MUS.phase === 'welcome') setPhase(stage === 'done' && CONFIG.openMode === 'iframe' ? 'none' : 'bgm', 2); }, len * 1000 + 600); }
+    if (!res.music){
+      const len = fanfare();
+      later(() => {
+        if (MUS.phase === 'welcome'){
+          if (stage === 'done' && CONFIG.openMode === 'iframe' && res.intro && introEl) playIntroAudio();
+          else setPhase(stage === 'done' && CONFIG.openMode === 'iframe' ? 'none' : 'bgm', 2);
+        }
+      }, len * 1000 + 600);
+    }
   }, 4300);
   later(() => {
     stage = 'done'; landing.style.clipPath = 'none'; landing.style.transform = 'none'; landing.style.filter = 'none';
@@ -1254,12 +1271,6 @@ function openGate(){
 function showSite(){
   site.classList.add('on'); site.classList.add('live');
   document.body.classList.remove('live'); document.body.classList.add('site-live');
-  if (res.intro && introEl){
-    setPhase('none', .6);
-    try { introEl.currentTime = 0; } catch(e){}
-    introEl.volume = MUS.on ? MUS.vol : 0;
-    introEl.play().catch(() => {});
-  }
   later(() => { stopDraw(); cv.style.display = 'none'; }, 1000);
   setTimeout(() => { try { site.focus(); } catch(e){} }, 900);
 }
